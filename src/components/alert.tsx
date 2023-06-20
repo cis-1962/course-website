@@ -38,7 +38,9 @@ export function Alert({
 }) {
   const Icon = alertIcons[type];
   return (
-    <div className={`flex items-center rounded-md ring-1 ${alertStyles[type]}`}>
+    <div
+      className={`grid-flow-row grid-cols-[auto_1fr] items-center rounded-md ring-1 sm:grid ${alertStyles[type]}`}
+    >
       {hideIcon || <Icon className="ml-4 hidden text-lg sm:block" />}
       <div className="p-4">{children}</div>
     </div>
