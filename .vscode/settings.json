@@ -1,0 +1,5 @@
+{
+  "editor.formatOnSave": true,
+  "npm.packageManager": "npm",
+  "eslint.packageManager": "npm"
+}
