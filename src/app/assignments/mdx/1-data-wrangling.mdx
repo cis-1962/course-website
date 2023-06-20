@@ -1,0 +1,69 @@
+import { Alert } from '@/components/alert';
+import { Code } from '@/components/code';
+
+{/* TODO: edit and such */}
+
+<Alert>
+  {`To build you the habit of writing elegant code, we will enforce the coding styles starting from HW1. Please read through the entire style guide carefully before you start the homework.`}
+</Alert>
+
+To get you started on your 197 journey, we're gonna have you guys first get accustomed to JavaScript syntax! Unlike previous semesters however, we're going to be de-emphasizing ES5 (for those who don't know, ES stands for ECMAScript, the ["official"](https://auth0.com/blog/a-brief-history-of-javascript/) name of JavaScript) syntax along with the amount of time we spend covering it, and predominantly focus on ES6 and onward. Although you'll definitely encounter some ES5 here and there when opening, say, the dev tools in Chrome or seeing the transpiled code from Webpack (which we'll all be covering later this sem!), you'll most likely be working with ES6 syntax for most of your future project work in the future. Not only will it be cleaner syntax overall, but it's the new industry standard that you'll be seeing most documentation written in / other people working in, and it'll help you in the long run.
+
+To that end, we'll be doing some finger exercises with a really cool [Kaggle dataset](https://www.kaggle.com/kimjihoo/coronavirusdataset?select=PatientInfo.csv) focused on COVID cases in South Korea (woot woot 대한민국) recorded by the KCDC, and we'll be using some of the patient data to perform some simple feature extraction + exploratory data analysis on the set. Don't panic - this isn't CIS545, so you won't need any extensive knowledge of Big Data™ or the like, and everything you need to do is explained in the comments!
+
+### Before starting this assignment
+
+Review [Lecture 1](/lectures/1-js-basics) ~ you may also find any of the other resources on the [lecture page](/lectures) helpful.
+
+Also unlike other classes, we **highly encourage the use of Google** to search things up as long as understand the materials you are reading.
+The ability to search things and understand others' work is so important in industry and especially with web development and JS. This is a skill that we wish you can master in this class as well!!
+
+<Alert>
+  Remember, this homework uses ES6! For that reason, just looking up how to do a
+  certain task in JavaScript and copying the first StackOverflow result will
+  probably lead you to using older ES5 syntax and hence incorrectly doing this
+  assignment. Try your best to struggle through it by recalling what we covered
+  in lecture, and if you can't, it's ok! There's always Google, just remember to
+  read what you're copying :D
+</Alert>
+
+## Getting Started
+
+- [Getting started guide](/development)
+- [Style guide](/style)
+
+This homework is written in NodeJS, which is a server-side implementation of JavaScript. It's like Ruby, Python, or other scripting languages: you write the code in plain-text files and then run them with the console command `node`.
+
+The first thing you'll need to get started is NodeJS. Follow the instructions in the **getting started guide** to download and install Node using NVM. Once finished, you can check that you've installed Node correctly by running `node --version` from your terminal. It should print a string like `v12.18.1`.
+
+Once you've got Node on your computer, you'll need to install the dependencies for the homework. From your homework directory, run:
+
+<Code code="npm install" />
+
+This should display a few lines of text about fetching packages, indicating that your dependencies have been installed successfully. This is a super common command you'll be using throughout your future years as a dev, so just know that it automatically looks at a file called `package.json` in your file directory that tells the package manager what dependencies your project has. You should now be able to run the homework with:
+
+<Code code="node index.js" />
+
+However, you shouldn't expect it to do anything since you haven't completed it yet! Thus comes our next part:
+
+## Completing the Homework
+
+Now comes the actual challenge! Again, the homework files themselves contain instructions on how to complete the different parts, so just refer to them and they should explain the assignment pretty well. If you need clarification, you can ask on CampusWire!
+
+In general, these are the concepts that we're aiming to practice using this homework, so if you ever feel like there's just too much to look for out there concerning syntax or you feel as if there's just too many ways to do something, just refer back to this list to get an idea of what we're looking for (i.e. for you overachievers, we're not gonna need complex SQL queries or anything close to that in order to do these assignments: the answers should be pretty simple!):
+
+- object destructuring
+- arrow functions (you should be utilizing `.forEach()`, not any other array methods!)
+- template literals (if you don't know remember these, refer back to the lecture notes ~)
+- `let` + `const`
+- `import` and `export`: getting used to the right format and what does what (definitely can be confusing in the beginning since there's several ways to do so, so just get familiar with it throughout this assignment!)
+
+**TIP: if you don't know where to start, even with just feeding in the data (trust me, I've been in your shoes before rip), these [docs](https://www.npmjs.com/package/csv-parser) should be a good place to start :))**
+
+Additionally, things can definitely seem scary and overwhelming in the beginning, but don't worry! It just takes time, and learning doesn't happen in one day, so remember to stay persistent!
+
+## Submitting the Homework
+
+We will be using Gradescope this semester. To join the course sign up/log into gradescope.com. Refer to Canvas for the course code. Note, in order to submit the assignment, you MUST register with the course code on Canvas. The only two files you need to submit are **functions.js** and **index.js**. Any other files are extraneous for our grading purposes(e.g. feedback.js, package.json, .estlintrc, etc.).
+
+Note, you have **infinite submissions**. The autograded portion is scaled to 15.0 points (per our syllabus) and manual/autograded style will be added later.

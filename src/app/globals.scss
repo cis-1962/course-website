@@ -23,16 +23,20 @@ body {
 .mdx {
   @apply dark:text-gray-300;
 
+  & > * {
+    @apply mt-4 first:mt-0;
+  }
+
   h1 {
-    @apply text-3xl font-extrabold;
+    @apply text-3xl font-extrabold md:text-4xl;
   }
 
   h2 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold md:text-3xl;
   }
 
   h3 {
-    @apply text-xl font-semibold;
+    @apply text-xl font-semibold md:text-2xl;
   }
 
   h1,
@@ -41,11 +45,11 @@ body {
   h4,
   h5,
   h6 {
-    @apply mt-6 font-display first:mt-0 dark:text-white;
+    @apply pt-[0.5em] font-display first:pt-0 dark:text-white;
   }
 
   a {
-    @apply underline transition-opacity hover:opacity-75 dark:text-white;
+    @apply underline hover:opacity-80 dark:text-white;
   }
 
   strong {
@@ -56,10 +60,13 @@ body {
     @apply dark:text-white;
   }
 
-  ul {
-    @apply flex flex-col gap-1;
+  code {
+    @apply font-mono dark:text-white;
+  }
 
+  ul {
     & > li {
+      @apply mt-1 first:mt-0;
       &::before {
         content: '-';
         @apply mr-2;
