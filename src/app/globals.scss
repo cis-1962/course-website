@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  @apply font-sans;
+}
+
+.mdx {
+  @apply dark:text-gray-300;
+
+  h1 {
+    @apply text-3xl font-extrabold;
+  }
+
+  h2 {
+    @apply text-2xl font-bold;
+  }
+
+  h3 {
+    @apply text-xl font-semibold;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mt-6 font-display first:mt-0 dark:text-white;
+  }
+
+  a {
+    @apply underline transition-opacity hover:opacity-75 dark:text-white;
+  }
+
+  strong {
+    @apply dark:text-white;
+  }
+
+  em {
+    @apply dark:text-white;
+  }
+
+  ul {
+    @apply flex flex-col gap-1;
+
+    & > li {
+      &::before {
+        content: '-';
+        @apply mr-2;
+      }
+    }
+  }
+}

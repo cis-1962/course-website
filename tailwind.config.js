@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/prefer-module */
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -11,6 +13,14 @@ module.exports = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      },
+      colors: {
+        foreground: 'rgb(var(--foreground-rgb))',
+        background: 'rgb(var(--background-rgb))',
+      },
+      fontFamily: {
+        sans: 'var(--font-sans)',
+        display: 'var(--font-display)',
       },
     },
   },
