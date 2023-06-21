@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { HiOutlineLockClosed } from 'react-icons/hi2';
 
-import { ASSIGNMENTS, TITLE_BASE } from '@/constants/metadata';
+import { ASSIGNMENTS } from '@/constants/course-data';
+import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
 
 export const metadata = {

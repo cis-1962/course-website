@@ -15,7 +15,7 @@ import {
   HiOutlineChevronRight,
 } from 'react-icons/hi2';
 
-import { LECTURES, LectureSlug } from '@/constants/metadata';
+import { LECTURES, LectureSlug } from '@/constants/course-data';
 import { LECTURES_ROUTE } from '@/constants/routes';
 
 export default function Slideshow({ children }: { children: ReactNode }) {

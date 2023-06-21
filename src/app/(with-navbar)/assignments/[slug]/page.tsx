@@ -3,7 +3,8 @@ import { redirect } from 'next/navigation';
 
 import hw01 from './mdx/1-data-wrangling.mdx';
 
-import { ASSIGNMENTS, AssignmentSlug, TITLE_BASE } from '@/constants/metadata';
+import { ASSIGNMENTS, AssignmentSlug } from '@/constants/course-data';
+import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
 
 const homeworkMdx: { [key in AssignmentSlug]: (props: any) => JSX.Element } = {

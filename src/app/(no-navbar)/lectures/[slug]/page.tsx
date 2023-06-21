@@ -6,7 +6,8 @@ import { HiOutlineArrowPath } from 'react-icons/hi2';
 import lec00 from './mdx/0-course-policies.mdx';
 import Slideshow from './slideshow';
 
-import { LECTURES, LectureSlug, TITLE_BASE } from '@/constants/metadata';
+import { LECTURES, LectureSlug } from '@/constants/course-data';
+import { TITLE_BASE } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
 
 import './slides.scss';

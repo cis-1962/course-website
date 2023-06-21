@@ -2,7 +2,8 @@ import { Metadata } from 'next';
 
 import { LectureNodeElement } from './lectures-ui';
 
-import { LectureSlug, TITLE_BASE } from '@/constants/metadata';
+import { LectureSlug } from '@/constants/course-data';
+import { TITLE_BASE } from '@/constants/metadata';
 
 export const metadata = {
   title: `${TITLE_BASE} | Lectures`,

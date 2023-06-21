@@ -6,7 +6,7 @@ import { HiOutlineChevronRight, HiOutlineLockClosed } from 'react-icons/hi2';
 
 import { LectureNode } from './page';
 
-import { LECTURES } from '@/constants/metadata';
+import { LECTURES } from '@/constants/course-data';
 import { LECTURES_ROUTE } from '@/constants/routes';
 
 function LectureSection({
