@@ -1,5 +1,7 @@
 import { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
+import { Suspense } from 'react';
+import { HiOutlineArrowPath } from 'react-icons/hi2';
 
 import lec00 from './mdx/0-course-policies.mdx';
 import Slideshow from './slideshow';
@@ -14,6 +16,14 @@ const lectureMdx: { [key in LectureSlug]: (props: any) => JSX.Element } = {
   '1-js-basics': lec00,
 };
 
+export function generateStaticParams() {
+  return Object.keys(LECTURES).map((slug) => ({
+    slug,
+  }));
+}
+
+export const dynamicParams = false;
+
 export function generateMetadata({
   params: { slug },
 }: {
@@ -25,15 +35,29 @@ export function generateMetadata({
   } satisfies Metadata;
 }
 
+function SlideshowFallback() {
+  return (
+    <div className="mx-auto max-w-4xl animate-appear p-2">
+      <div className="flex flex-row py-3 opacity-20 md:items-center">
+        <div className="flex flex-col gap-2 md:flex-row md:items-center">
+          <div className="h-6 w-[7.5rem] animate-pulse rounded-full bg-foreground"></div>
+          <div className="h-6 w-40 animate-pulse rounded-full bg-foreground md:ml-8"></div>
+        </div>
+        <div className="m-2 ml-auto h-6 w-20 animate-pulse rounded-full bg-foreground"></div>
+      </div>
+      <div className="flex min-h-[24rem] flex-col items-center justify-center opacity-30">
+        <HiOutlineArrowPath className="animate-spin text-3xl" />
+      </div>
+    </div>
+  );
+}
+
 export default function LecturePage({
   params: { slug },
 }: {
   params: { slug: string };
 }) {
-  // check slug exists
-  if (!Object.keys(LECTURES).includes(slug)) {
-    notFound();
-  }
+  // we know slug exists because of dynamicParams option
   const { date } = LECTURES[slug as LectureSlug];
 
   // check if assignment unlocked
@@ -43,8 +67,11 @@ export default function LecturePage({
 
   const Mdx = lectureMdx[slug as LectureSlug];
   return (
-    <Slideshow>
-      <Mdx />
-    </Slideshow>
+    <Suspense fallback={<SlideshowFallback />}>
+      <Slideshow>
+        <Mdx />
+      </Slideshow>
+    </Suspense>
+    // <SlideshowFallback />
   );
 }

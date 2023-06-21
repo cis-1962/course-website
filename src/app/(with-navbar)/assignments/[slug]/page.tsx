@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { notFound, redirect } from 'next/navigation';
+import { redirect } from 'next/navigation';
 
 import hw01 from './mdx/1-data-wrangling.mdx';
 
@@ -10,6 +10,14 @@ const homeworkMdx: { [key in AssignmentSlug]: (props: any) => JSX.Element } = {
   '1-data-wrangling': hw01,
   '2-async-events': hw01,
 };
+
+export function generateStaticParams() {
+  return Object.keys(ASSIGNMENTS).map((slug) => ({
+    slug,
+  }));
+}
+
+export const dynamicParams = false;
 
 export function generateMetadata({
   params: { slug },
@@ -27,10 +35,7 @@ export default function AssignmentPage({
 }: {
   params: { slug: string };
 }) {
-  // check slug exists
-  if (!Object.keys(ASSIGNMENTS).includes(slug)) {
-    notFound();
-  }
+  // we know slug exists because of dynamicParams option
   const { number, name, unlocks } = ASSIGNMENTS[slug as AssignmentSlug];
 
   // check if assignment unlocked

@@ -6,12 +6,12 @@ import { TITLE_BASE } from '@/constants/metadata';
 
 const displayFont = IBM_Plex_Sans({
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700'],
+  weight: ['300', '400', '500', '600', '700'],
   variable: '--font-display',
 });
 const sansFont = Inter({
   subsets: ['latin'],
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-sans',
 });
 

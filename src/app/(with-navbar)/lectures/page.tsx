@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+
 import { LectureNodeElement } from './lectures-ui';
 
 import { LectureSlug, TITLE_BASE } from '@/constants/metadata';

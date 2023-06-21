@@ -22,6 +22,15 @@ module.exports = {
         sans: 'var(--font-sans)',
         display: 'var(--font-display)',
       },
+      keyframes: {
+        appear: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+      },
+      animation: {
+        appear: '2s linear 0.5s both 1 appear',
+      },
     },
   },
   plugins: [],
