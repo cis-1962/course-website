@@ -29,8 +29,10 @@ function NavLink({
     <li>
       <Link
         href={href}
-        className={`rounded-full px-3 py-2 text-lg font-medium ring-0 transition-opacity ${
-          isActive ? 'opacity-100' : 'opacity-50 hover:opacity-100'
+        className={`px-3 py-2 text-lg font-medium transition-opacity ${
+          isActive
+            ? 'opacity-100'
+            : 'opacity-50 hover:opacity-80 focus-visible:opacity-80'
         }`}
       >
         {children}

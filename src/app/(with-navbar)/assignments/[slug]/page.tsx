@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 
-import hw01 from '../mdx/1-data-wrangling.mdx';
+import hw01 from './mdx/1-data-wrangling.mdx';
 
 import { ASSIGNMENTS, AssignmentSlug, TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
@@ -31,7 +31,6 @@ export default function AssignmentPage({
   if (!Object.keys(ASSIGNMENTS).includes(slug)) {
     notFound();
   }
-
   const { number, name, unlocks } = ASSIGNMENTS[slug as AssignmentSlug];
 
   // check if assignment unlocked
@@ -40,9 +39,8 @@ export default function AssignmentPage({
   }
 
   const Mdx = homeworkMdx[slug as AssignmentSlug];
-
   return (
-    <div className="mdx mb-24">
+    <div className="mdx">
       <h1>
         Homework {number} - {name}
       </h1>

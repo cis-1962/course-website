@@ -17,3 +17,19 @@ export const ASSIGNMENTS = {
 // TODO: more assignments!
 
 export type AssignmentSlug = keyof typeof ASSIGNMENTS;
+
+export const LECTURES = {
+  '0-course-policies': {
+    name: 'Course Policies',
+    number: 0,
+    date: Date.parse('01 June 2023 19:00:00 EST'),
+  },
+  '1-js-basics': {
+    name: 'JavaScript Basics',
+    number: 1,
+    date: Date.parse('25 June 2023 19:00:00 EST'),
+  },
+} as const;
+// TODO: more lectures!
+
+export type LectureSlug = keyof typeof LECTURES;

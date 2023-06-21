@@ -11,11 +11,8 @@ export const metadata = {
 
 export default function HomePage() {
   return (
-    <div className="container mx-auto p-2">
-      <Navbar />
-      <main className="mdx mb-24">
-        <Home />
-      </main>
-    </div>
+    <main className="mdx mb-24">
+      <Home />
+    </main>
   );
 }

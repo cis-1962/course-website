@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { HiOutlineLockClosed } from 'react-icons/hi2';
 
 import { ASSIGNMENTS, TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
@@ -38,7 +39,6 @@ export default function AssignmentsPage() {
         {Object.entries(ASSIGNMENTS).map(
           ([slug, { name, number, unlocks, due }]) => {
             const isUnlocked = unlocks < Date.now();
-            const isDue = due < Date.now();
             return (
               <>
                 <div
@@ -56,7 +56,9 @@ export default function AssignmentsPage() {
                       {name}
                     </Link>
                   ) : (
-                    <div className="opacity-50">🔒 {name}</div>
+                    <div className="flex flex-row items-center gap-3 opacity-50">
+                      <HiOutlineLockClosed /> {name}
+                    </div>
                   )}
                 </li>
                 <div key={`${slug}-unlocks`} className="">
