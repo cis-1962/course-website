@@ -23,7 +23,7 @@ function LectureSection({
         onClick={() => {
           setCollapsed((collapsed) => !collapsed);
         }}
-        className="flex flex-row items-center gap-2 p-2 text-2xl font-medium"
+        className="flex flex-row items-center gap-2 p-2 font-display text-2xl font-medium"
       >
         <HiOutlineChevronRight
           className={`transition-transform ${
@@ -55,23 +55,23 @@ const dateFormatter = Intl.DateTimeFormat('en-US', {
 export function LectureNodeElement({ node }: { node: LectureNode }) {
   if (node.slug) {
     // leaf node
-    const { name, date } = LECTURES[node.slug];
+    const { name, number, date } = LECTURES[node.slug];
     const isUnlocked = Date.now() > date;
     const dateString = dateFormatter.format(new Date(date));
     return (
       <div className="flex flex-row items-center gap-3">
-        <span className="opacity-50">{dateString}</span>
+        <span className="text-sm opacity-50">{dateString}</span>
         {isUnlocked ? (
           <Link
             href={`${LECTURES_ROUTE}/${node.slug}`}
             className="p-2 text-lg underline md:no-underline md:hover:underline md:hover:opacity-80"
           >
-            {name}
+            {number} - {name}
           </Link>
         ) : (
-          <p className="flex flex-row items-center gap-3 p-2 text-lg">
+          <p className="flex flex-row items-center gap-3 p-2 text-lg opacity-50">
+            {number} - {name}
             <HiOutlineLockClosed />
-            {name}
           </p>
         )}
       </div>

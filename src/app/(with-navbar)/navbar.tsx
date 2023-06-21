@@ -29,11 +29,12 @@ function NavLink({
     <li>
       <Link
         href={href}
-        className={`px-3 py-2 text-lg font-medium transition-opacity ${
+        className={`rounded-full px-3 py-2 outline-none transition-opacity ${
           isActive
             ? 'opacity-100'
-            : 'opacity-50 hover:opacity-80 focus-visible:opacity-80'
+            : 'opacity-50 ring-foreground hover:opacity-80 focus-visible:opacity-100 focus-visible:ring-1'
         }`}
+        tabIndex={isActive ? -1 : undefined}
       >
         {children}
       </Link>
@@ -51,7 +52,7 @@ export function Navbar() {
         <h1 className="font-display text-4xl font-extrabold md:text-5xl">
           CIS-1962: JavaScript Minicourse
         </h1>
-        <ul className="-ml-3 mt-2 flex flex-row flex-wrap">
+        <ul className="-ml-3 mt-2 flex select-none flex-row flex-wrap font-display text-lg font-medium">
           <NavLink href={HOME_ROUTE} exact>
             Home
           </NavLink>

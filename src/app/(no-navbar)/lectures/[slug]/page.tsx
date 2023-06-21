@@ -1,10 +1,13 @@
 import { Metadata } from 'next';
+import { notFound, redirect } from 'next/navigation';
 
 import lec00 from './mdx/0-course-policies.mdx';
+import Slideshow from './slideshow';
 
 import { LECTURES, LectureSlug, TITLE_BASE } from '@/constants/metadata';
-import { notFound, redirect } from 'next/navigation';
 import { LECTURES_ROUTE } from '@/constants/routes';
+
+import './slides.scss';
 
 const lectureMdx: { [key in LectureSlug]: (props: any) => JSX.Element } = {
   '0-course-policies': lec00,
@@ -40,8 +43,8 @@ export default function LecturePage({
 
   const Mdx = lectureMdx[slug as LectureSlug];
   return (
-    <div className="mdx slides">
+    <Slideshow>
       <Mdx />
-    </div>
+    </Slideshow>
   );
 }

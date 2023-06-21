@@ -43,7 +43,7 @@ export default function AssignmentsPage() {
               <>
                 <div
                   key={`${slug}-num`}
-                  className="mr-8 hidden opacity-50 md:block"
+                  className="mr-8 hidden font-light opacity-50 md:block"
                 >
                   {number}
                 </div>
@@ -61,13 +61,13 @@ export default function AssignmentsPage() {
                     </div>
                   )}
                 </li>
-                <div key={`${slug}-unlocks`} className="">
+                <div key={`${slug}-unlocks`}>
                   {isUnlocked || `Unlocks ${formatDaysTill(unlocks)}`}
                 </div>
                 <div
                   key={`${slug}-due`}
                   className={`mb-4 md:mb-0 md:ml-8 ${
-                    isUnlocked ? '' : 'opacity-50'
+                    isUnlocked ? '' : 'font-light opacity-50'
                   }`}
                 >
                   Due {formatDaysTill(due)}

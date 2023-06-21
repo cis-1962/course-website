@@ -1,15 +1,15 @@
 import { Metadata } from 'next';
 import './globals.scss';
-import { Fira_Sans, Signika } from 'next/font/google';
+import { IBM_Plex_Sans, Inter } from 'next/font/google';
 
 import { TITLE_BASE } from '@/constants/metadata';
 
-const spaceGrotesk = Signika({
+const displayFont = IBM_Plex_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
   variable: '--font-display',
 });
-const fira = Fira_Sans({
+const sansFont = Inter({
   subsets: ['latin'],
   weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
   variable: '--font-sans',
@@ -27,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${fira.variable} ${spaceGrotesk.variable}`}>
+      <body className={`${sansFont.variable} ${displayFont.variable}`}>
         {children}
       </body>
     </html>

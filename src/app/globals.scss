@@ -20,56 +20,67 @@ body {
   @apply font-sans;
 }
 
-.mdx {
-  @apply dark:text-gray-300;
+@layer base {
+  .mdx {
+    @apply dark:text-gray-300;
 
-  & > * {
-    @apply mt-4 first:mt-0;
-  }
+    & > * {
+      @apply mt-4 first:mt-0;
+    }
 
-  h1 {
-    @apply text-3xl font-extrabold md:text-4xl;
-  }
+    h1 {
+      @apply text-3xl font-extrabold md:text-4xl;
+    }
 
-  h2 {
-    @apply text-2xl font-bold md:text-3xl;
-  }
+    h2 {
+      @apply text-2xl font-bold md:text-3xl;
+    }
 
-  h3 {
-    @apply text-xl font-semibold md:text-2xl;
-  }
+    h3 {
+      @apply text-xl font-semibold md:text-2xl;
+    }
 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply pt-[0.5em] font-display first:pt-0 dark:text-white;
-  }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      @apply pt-[0.5em] font-display first:pt-0 dark:text-white;
+    }
 
-  a {
-    @apply underline hover:opacity-80 dark:text-white;
-  }
+    a {
+      @apply underline hover:opacity-80 dark:text-white;
+    }
 
-  strong {
-    @apply dark:text-white;
-  }
+    strong {
+      @apply dark:text-white;
+    }
 
-  em {
-    @apply dark:text-white;
-  }
+    em {
+      @apply dark:text-white;
+    }
 
-  code {
-    @apply font-mono dark:text-white;
-  }
+    code {
+      @apply font-mono dark:text-white;
+    }
 
-  ul {
-    & > li {
-      @apply mt-1 first:mt-0;
-      &::before {
-        content: '-';
-        @apply mr-2;
+    ul {
+      & > * {
+        @apply mt-1 first:mt-0;
+      }
+
+      & > li {
+        @apply ml-[1.25em];
+        &::before {
+          @apply absolute -ml-[1em] block;
+          content: '-';
+          @apply mr-2;
+        }
+      }
+
+      ul {
+        @apply mb-2 mt-1;
       }
     }
   }
