@@ -27,7 +27,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${sansFont.variable} ${displayFont.variable}`}>
+      <body
+        className={`${sansFont.variable} ${displayFont.variable} overflow-y-scroll transition-colors scrollbar-thin scrollbar-track-background scrollbar-thumb-neutral-400 hover:scrollbar-thumb-foreground dark:scrollbar-thumb-neutral-700`}
+      >
         {children}
       </body>
     </html>
