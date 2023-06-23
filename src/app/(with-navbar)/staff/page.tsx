@@ -1,8 +1,14 @@
+import { Metadata } from 'next';
 import Image from 'next/image';
 
 import { EmailCopyButton } from './email-copy';
 
+import { TITLE_BASE } from '@/constants/metadata';
 import { STAFF, STAFF_IMAGE_FOLDER } from '@/constants/staff';
+
+export const metadata = {
+  title: `${TITLE_BASE} | Staff`,
+} satisfies Metadata;
 
 export default function StaffPage() {
   return (
