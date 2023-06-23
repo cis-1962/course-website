@@ -48,7 +48,12 @@ export default function AssignmentsPage() {
                 >
                   {number}
                 </div>
-                <li key={`${slug}-li`} className="text-xl font-medium">
+                <li
+                  key={`${slug}-li`}
+                  className={`${
+                    isUnlocked ? 'font-semibold dark:font-medium' : ''
+                  }`}
+                >
                   {isUnlocked ? (
                     <Link
                       href={`${ASSIGNMENTS_ROUTE}/${slug}`}
@@ -58,17 +63,20 @@ export default function AssignmentsPage() {
                     </Link>
                   ) : (
                     <div className="flex flex-row items-center gap-3 opacity-50">
-                      <HiOutlineLockClosed /> {name}
+                      {name} <HiOutlineLockClosed />
                     </div>
                   )}
                 </li>
-                <div key={`${slug}-unlocks`}>
+                <div
+                  key={`${slug}-unlocks`}
+                  className="font-light dark:font-extralight"
+                >
                   {isUnlocked || `Unlocks ${formatDaysTill(unlocks)}`}
                 </div>
                 <div
                   key={`${slug}-due`}
-                  className={`mb-4 md:mb-0 md:ml-8 ${
-                    isUnlocked ? '' : 'font-light opacity-50'
+                  className={`mb-4 font-light dark:font-extralight md:mb-0 md:ml-8 ${
+                    isUnlocked ? '' : 'opacity-50'
                   }`}
                 >
                   Due {formatDaysTill(due)}

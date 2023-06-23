@@ -119,7 +119,7 @@ export default function Slideshow({ children }: { children: ReactNode }) {
   const { number, name } = LECTURES[pathname.split('/').pop() as LectureSlug];
 
   return (
-    <div className="mx-auto max-w-4xl p-2">
+    <div className="mx-auto max-w-4xl p-3">
       <nav className="my-4 mb-4 flex gap-2 text-sm font-light">
         <div className="items-center sm:flex">
           <Link

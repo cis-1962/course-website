@@ -33,9 +33,11 @@ const lectureTree: LectureNode[] = [
 export default function LecturesPage() {
   return (
     <main>
-      {lectureTree.map((node) => (
-        <LectureNodeElement node={node} key={node.slug || node.sectionName} />
-      ))}
+      <div className="-mt-4">
+        {lectureTree.map((node) => (
+          <LectureNodeElement node={node} key={node.slug || node.sectionName} />
+        ))}
+      </div>
     </main>
   );
 }

@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import { IBM_Plex_Sans, Inter } from 'next/font/google';
+import { IBM_Plex_Sans, Inter, JetBrains_Mono } from 'next/font/google';
 
 import { ThemeSelector } from '../components/theme/theme-selector';
 
@@ -17,6 +17,11 @@ const sansFont = Inter({
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-sans',
 });
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  weight: ['400', '500'],
+  variable: '--font-mono',
+});
 
 export const metadata = DEFAULT_METADATA satisfies Metadata;
 
@@ -28,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${sansFont.variable} ${displayFont.variable} overflow-y-scroll transition-colors scrollbar-thin scrollbar-track-background scrollbar-thumb-neutral-400 hover:scrollbar-thumb-foreground dark:scrollbar-thumb-neutral-700`}
+        className={`${sansFont.variable} ${displayFont.variable} ${monoFont.variable} overflow-y-scroll transition-colors scrollbar-thin scrollbar-track-background scrollbar-thumb-neutral-400 hover:scrollbar-thumb-foreground dark:scrollbar-thumb-neutral-700`}
       >
         <ThemeSelector />
         {children}

@@ -1,5 +1,3 @@
-'use client';
-
 import { ReactNode } from 'react';
 import type { IconType } from 'react-icons';
 import {
@@ -31,10 +29,12 @@ export function Alert({
   children,
   type = 'info',
   hideIcon,
+  mdx,
 }: {
   children: ReactNode;
   type?: AlertType;
   hideIcon?: boolean;
+  mdx?: boolean;
 }) {
   const Icon = alertIcons[type];
   return (
@@ -42,7 +42,7 @@ export function Alert({
       className={`grid-flow-row grid-cols-[auto_1fr] items-center rounded-md ring-1 sm:grid ${alertStyles[type]}`}
     >
       {hideIcon || <Icon className="ml-4 hidden text-lg sm:block" />}
-      <div className="p-4">{children}</div>
+      <div className={`p-4 ${mdx ? 'space-children-2' : ''}`}>{children}</div>
     </div>
   );
 }

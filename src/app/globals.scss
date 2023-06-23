@@ -17,12 +17,18 @@
 body {
   color: rgb(var(--foreground-rgb));
   background: rgb(var(--background-rgb));
-  @apply font-sans;
+  @apply font-sans dark:font-light;
+}
+
+@layer utilities {
+  .space-children-2 > * {
+    @apply mt-2 first:mt-0;
+  }
 }
 
 @layer base {
   .mdx {
-    @apply dark:text-neutral-300;
+    @apply tracking-[0.01em];
 
     & > * {
       @apply mt-4 first:mt-0;
@@ -46,57 +52,68 @@ body {
     h4,
     h5,
     h6 {
-      @apply pt-[0.5em] font-display first:pt-0 dark:text-white;
+      @apply pt-[0.5em] font-display tracking-[-0.01em] first:pt-0;
     }
 
     a {
-      @apply underline hover:opacity-80 dark:text-white;
+      @apply underline hover:opacity-80 dark:font-normal;
     }
 
-    strong {
-      @apply dark:text-white;
+    em,
+    em a {
+      @apply dark:font-normal;
     }
 
-    em {
-      @apply dark:text-white;
+    strong,
+    strong a {
+      @apply dark:font-bold;
     }
 
     pre {
-      @apply overflow-hidden rounded-md ring-1 ring-neutral-300 dark:ring-0;
+      @apply overflow-hidden rounded-md ring-1 ring-neutral-300 dark:ring-gray-700;
     }
 
     code {
-      @apply font-mono dark:text-white;
+      @apply font-mono dark:font-normal;
     }
 
     pre > code {
       @apply block p-[1em] transition-colors;
-    }
 
-    pre > code * {
-      @apply transition-colors;
+      * {
+        @apply transition-colors;
+      }
     }
 
     img {
       @apply max-h-[52rem];
     }
 
-    ul {
+    ul,
+    ol {
       & > * {
         @apply mt-1 first:mt-0;
       }
 
-      & > li {
-        @apply ml-[1.25em];
-        &::before {
-          @apply absolute -ml-[1em] block;
-          content: '-';
-          @apply mr-2;
-        }
-      }
-
-      ul {
+      ul,
+      ol {
         @apply mb-2 mt-1;
+      }
+    }
+
+    ul > li {
+      @apply ml-[1.25em];
+      counter-increment: list-increment;
+      &::before {
+        content: '-';
+        @apply absolute -ml-[1em] mr-2 block;
+      }
+    }
+
+    ol > li {
+      counter-increment: list-increment;
+      &::before {
+        content: counter(list-increment) '. ';
       }
     }
   }

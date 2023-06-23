@@ -38,7 +38,7 @@ export function generateMetadata({
 
 function SlideshowFallback() {
   return (
-    <div className="mx-auto max-w-4xl animate-appear p-2">
+    <div className="mx-auto max-w-4xl animate-appear p-3">
       <div className="flex flex-row py-3 opacity-20 md:items-center">
         <div className="flex flex-col gap-2 md:flex-row md:items-center">
           <div className="h-6 w-[7.5rem] animate-pulse rounded-full bg-foreground"></div>

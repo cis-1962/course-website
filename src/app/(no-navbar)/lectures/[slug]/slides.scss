@@ -2,7 +2,7 @@
 
 @layer components {
   .mdx.slides {
-    @apply min-h-[24rem] text-lg leading-8 tracking-wide md:text-xl;
+    @apply min-h-[24rem] leading-[1.5em] tracking-wide md:text-xl;
 
     h1,
     h2,

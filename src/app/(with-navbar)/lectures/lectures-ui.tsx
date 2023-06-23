@@ -23,7 +23,9 @@ function LectureSection({
         onClick={() => {
           setCollapsed((collapsed) => !collapsed);
         }}
-        className="flex flex-row items-center gap-2 p-2 font-display text-2xl font-medium"
+        className={`-ml-6 flex select-none flex-row items-center gap-2 font-semibold dark:font-medium ${
+          collapsed ? 'mb-4' : ''
+        }`}
       >
         <HiOutlineChevronRight
           className={`transition-transform ${
@@ -33,7 +35,7 @@ function LectureSection({
         {sectionName}
       </button>
       {collapsed || (
-        <ul className="mb-4 ml-11">
+        <ul className="mb-4 mt-2">
           {children.map((child) => {
             return (
               <li key={child.slug || child.sectionName}>
@@ -59,18 +61,18 @@ export function LectureNodeElement({ node }: { node: LectureNode }) {
     const isUnlocked = Date.now() > date;
     const dateString = dateFormatter.format(new Date(date));
     return (
-      <div className="flex flex-row items-center gap-3">
-        <span className="text-sm opacity-50">{dateString}</span>
+      <div className="flex flex-row items-center gap-2">
+        <span className="font-light opacity-50">{dateString}</span>
         {isUnlocked ? (
           <Link
             href={`${LECTURES_ROUTE}/${node.slug}`}
-            className="p-2 text-lg underline md:no-underline md:hover:underline md:hover:opacity-80"
+            className="px-2 py-1 underline md:no-underline md:hover:underline md:hover:opacity-80"
           >
-            {number} - {name}
+            {number}. {name}
           </Link>
         ) : (
-          <p className="flex flex-row items-center gap-3 p-2 text-lg opacity-50">
-            {number} - {name}
+          <p className="flex flex-row items-center gap-2 px-2 py-1 opacity-50">
+            {number}. {name}
             <HiOutlineLockClosed />
           </p>
         )}
@@ -78,5 +80,9 @@ export function LectureNodeElement({ node }: { node: LectureNode }) {
     );
   }
   // section
-  return <LectureSection node={node} />;
+  return (
+    <div className="ml-6 mt-4">
+      <LectureSection node={node} />
+    </div>
+  );
 }

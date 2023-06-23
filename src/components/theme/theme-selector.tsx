@@ -1,3 +1,9 @@
+/**
+ * This is an insane hack to get syntax highlighting color themes to respect
+ * light/dark mode. It uses React lazy loading to only load a stylesheet if the
+ * client's color scheme matches.
+ */
+
 'use client';
 
 import React, { useEffect, useState } from 'react';

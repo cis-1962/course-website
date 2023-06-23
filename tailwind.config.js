@@ -21,6 +21,7 @@ module.exports = {
       fontFamily: {
         sans: 'var(--font-sans)',
         display: 'var(--font-display)',
+        mono: 'var(--font-mono)',
       },
       keyframes: {
         appear: {
@@ -30,6 +31,15 @@ module.exports = {
       },
       animation: {
         appear: '2s linear 0.5s both 1 appear',
+      },
+      container: {
+        screens: {
+          sm: '640px',
+          md: '768px',
+          lg: '1024px',
+          // xl: '1280px',
+          // '2xl': '1536px',
+        },
       },
     },
   },
