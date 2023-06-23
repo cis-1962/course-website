@@ -1,16 +1,10 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
-import hw01 from './mdx/1-data-wrangling.mdx';
-
 import { ASSIGNMENTS, AssignmentSlug } from '@/constants/course-data';
 import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
-
-const homeworkMdx: { [key in AssignmentSlug]: (props: any) => JSX.Element } = {
-  '1-data-wrangling': hw01,
-  '2-async-events': hw01,
-};
+import { assignmentMdx } from '@/markdown/assignments/mdx';
 
 export function generateStaticParams() {
   return Object.keys(ASSIGNMENTS).map((slug) => ({
@@ -44,7 +38,7 @@ export default function AssignmentPage({
     redirect(ASSIGNMENTS_ROUTE);
   }
 
-  const Mdx = homeworkMdx[slug as AssignmentSlug];
+  const Mdx = assignmentMdx[slug as AssignmentSlug];
   return (
     <div className="mdx">
       <h1>

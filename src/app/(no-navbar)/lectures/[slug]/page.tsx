@@ -3,19 +3,14 @@ import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { HiOutlineArrowPath } from 'react-icons/hi2';
 
-import lec00 from './mdx/0-course-policies.mdx';
 import Slideshow from './slideshow';
 
 import { LECTURES, LectureSlug } from '@/constants/course-data';
 import { TITLE_BASE } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
+import { lectureMdx } from '@/markdown/lectures/mdx';
 
 import './slides.scss';
-
-const lectureMdx: { [key in LectureSlug]: (props: any) => JSX.Element } = {
-  '0-course-policies': lec00,
-  '1-js-basics': lec00,
-};
 
 export function generateStaticParams() {
   return Object.keys(LECTURES).map((slug) => ({

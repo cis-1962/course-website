@@ -15,14 +15,14 @@ export const STAFF = [
     email: 'tuneer@seas.upenn.edu',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    image: 'kashyap.png',
+    image: 'raccoon.png',
   },
   {
     name: 'Kashyap Chaturvedula',
-    role: 'Lecturer',
-    email: 'tuneer@seas.upenn.edu',
+    role: 'TA',
+    email: 'kashyapc@seas.upenn.edu',
     description:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    image: 'kashyap.png',
+    image: 'raccoon.png',
   },
 ] as const;

@@ -16,6 +16,7 @@ export default function StaffPage() {
             <h2 className="mt-4 font-display text-3xl font-bold tracking-[-0.01em] dark:font-semibold">
               {name}
             </h2>
+            <div className="font-medium opacity-50">{role}</div>
             <p className="mt-2 tracking-[0.01em]">{description}</p>
             <div className="mt-1 flex items-center gap-1">
               <a

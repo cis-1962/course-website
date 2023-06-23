@@ -15,12 +15,12 @@ export function ThemeSelector() {
   const [isDark, setIsDark] = useState<boolean | undefined>();
 
   useEffect(() => {
-    const funny = window.matchMedia('(prefers-color-scheme: dark)');
+    const query = window.matchMedia('(prefers-color-scheme: dark)');
     const onChange = (evt: MediaQueryListEvent) => setIsDark(evt.matches);
-    setIsDark(funny.matches);
-    funny.addEventListener('change', onChange);
+    setIsDark(query.matches);
+    query.addEventListener('change', onChange);
 
-    return () => funny.removeEventListener('change', onChange);
+    return () => query.removeEventListener('change', onChange);
   }, []);
 
   return (
