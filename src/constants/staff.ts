@@ -22,7 +22,7 @@ export const STAFF = [
     role: 'TA',
     email: 'kashyapc@seas.upenn.edu',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-    image: 'raccoon.png',
+      'Hi, I’m Kashyap, an undergrad junior studying CS @ Penn. I’m involved in Penn Spark, a club focused on design and engineering projects; If you’re interested in building something fun please check us out!',
+    image: 'kashyap.png',
   },
 ] as const;
