@@ -22,7 +22,7 @@ body {
 
 @layer base {
   .mdx {
-    @apply dark:text-gray-300;
+    @apply dark:text-neutral-300;
 
     & > * {
       @apply mt-4 first:mt-0;
@@ -61,8 +61,24 @@ body {
       @apply dark:text-white;
     }
 
+    pre {
+      @apply overflow-hidden rounded-md ring-1 ring-neutral-300 dark:ring-0;
+    }
+
     code {
       @apply font-mono dark:text-white;
+    }
+
+    pre > code {
+      @apply block p-[1em] transition-colors;
+    }
+
+    pre > code * {
+      @apply transition-colors;
+    }
+
+    img {
+      @apply max-h-[52rem];
     }
 
     ul {

@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
-import './globals.scss';
 import { IBM_Plex_Sans, Inter } from 'next/font/google';
 
+import { ThemeSelector } from '../components/theme/theme-selector';
+
 import { DEFAULT_METADATA } from '@/constants/metadata';
+
+import './globals.scss';
 
 const displayFont = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -27,6 +30,7 @@ export default function RootLayout({
       <body
         className={`${sansFont.variable} ${displayFont.variable} overflow-y-scroll transition-colors scrollbar-thin scrollbar-track-background scrollbar-thumb-neutral-400 hover:scrollbar-thumb-foreground dark:scrollbar-thumb-neutral-700`}
       >
+        <ThemeSelector />
         {children}
       </body>
     </html>
