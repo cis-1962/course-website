@@ -5,65 +5,90 @@ export const metadata = {
   title: `${TITLE_BASE} | Development`,
 };
 
-{/* TODO: edit and such! */}
+## Intro
 
-### Intro
+There are many ways to write JavaScript, and JavaScript is used for many different purposes, from mobile apps to command line scripts, and of course in the browser. This is a guide for how you can get started writing JS in an environment that will suit you well for this course and future projects you take on in JS.
 
-There are many ways to write JavaScript, and JavaScript is used for many different purposes from mobile apps to command line scripts and of course in the browser. This is a guide for how you can get started writing JS in an environment that will suit you well for this course and future projects you take on in JS.
+<Alert mdx type="warning">
+__For Windows users:__
 
-<Alert mdx>
-  __For Windows users:__
-
-    One of the main appeals of web development is that products work on all
-    devices regardless of OS. That being said, there can be some difficulties
-    when developing web apps from different OS's (particularly Windows). Expect
-    to spend some time debugging and looking around for answers when things
-    don't work quite as expected when installing dependencies and submitting
-    work. The teaching staff will work with you to mitigate these problems!
-
-    We highly recommend you use [git bash](https://gitforwindows.org/) for running
-    scripts. This will allow for more linux-like syntax and operations.
+One of the main appeals of web development is that products work on all devices regardless of OS. That being said, there can be some difficulties when developing web apps from different OS's - particularly Windows. This is why we recommend **Windows Subsystem for Linux (WSL)** for development on Windows systems. This is a Microsoft-made tool which allows you to run a lightweight Linux system inside Windows, making your developer experience more convenient.
 
 </Alert>
 
-### Installing node
+If you're on Windows, follow [this guide](https://learn.microsoft.com/en-us/windows/wsl/install) to set up WSL. We also recommend using [Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701) to access your Linux subsystem once it is installed. You can then follow the rest of this guide as written using WSL.
 
-JavaScript was originally written to bring dynamic content to HTML and CSS websites. Node (Node.js) is a run-time compiler for running JS anywhere and everywhere (not just in the browser). Node Package Manager (npm) is the system which Node uses for installing dependencies (packages) for a program which let you take advantage of frameworks, functions, and tools other people have written.
+<Alert mdx type="danger">
+  If you instead choose to develop on Windows without WSL, expect to spend some
+  time debugging and looking around for answers when things don't work quite as
+  expected when installing dependencies and submitting work. The teaching staff
+  will work with you to mitigate these problems!
+</Alert>
+
+## Installing node
+
+JavaScript was originally written to bring dynamic content to HTML and CSS websites, and for a long time only ran in browsers. **Node (Node.js)** is a JS runtime that operates anywhere and everywhere, not just in the browser. **Node Package Manager (npm)** is the system that Node uses for installing dependencies (packages) for a project, letting you take advantage of frameworks, functions, and tools that other people have written.
 
 React and Express are popular examples of Node packages which we will become familiar with over the course of this semester.
 
-If you've heard of Yarn, it's another package manager developed by Facebook which largely does the same thing as NPM with subtle differences. For this course, we will stick to npm for homeworks.
+If you've heard of Yarn, it's another package manager developed by Facebook which largely does the same thing as npm with subtle differences. For this course, we will stick to npm for homeworks.
 
-To check if Node is installed, open the Terminal or Command Prompt app on your computer and run:
+To check if Node is already installed, open your terminal and run:
 
-```text
+```sh
 node -v
 ```
 
-If something along the lines of `v10.16.3` is returned, Node is set up successfully. If you have a version less than 8, consider installing a more recent release. If there is an error or no version is returned, follow the directions below.
+If you get back something along the lines of `18.16.1`, you're good to go. If you have a version less than `16`, consider installing a more recent release. If there is an error or no version is returned, follow the directions below.
 
-To install Node, proceed to the [node.js website](https://nodejs.org/en/download/) and download the latest Long Term Support (LTS) version of Node. When the download has finished installing, open the file and follow the prompted instructions until Node is set up on your machine.
+We recommend using **Node Version Manager** (nvm) for installing Node. This will give you more control over the version(s) of Node installed on your system. Run their [install script](https://github.com/nvm-sh/nvm#install--update-script) to get set up. Once installed, use it to install the latest long-term support (LTS) release of Node by running:
 
-To assert everything installed correctly, run:
-
-```text
-node -v
+```sh
+nvm install --lts
 ```
 
-### Picking a code editor
+To assert everything installed correctly, run `node -v`. You should get back something like `18.16.1`.
+
+## Picking a code editor
 
 Few people write JS in full-fledged IDE's in the way you might be used to running Java in Eclipse or IntelliJ. Though there are solutions for this (like [Webstorm](https://www.jetbrains.com/webstorm/)) these often introduce overhead and unnecessary complexity.
 
-Instead, JS devs often use lighter tools like [VSCode](https://code.visualstudio.com), [Atom](https://atom.io), or [Sublime Text](https://www.sublimetext.com). The CIS 197 staff tends to use VSCode because of the strong developer community, UI, and built-in terminal. All of these tools have built in package managers for installing packages which improve the developer experience like syntax highlighting, help formatting, and help with code completion.
+Instead, web devs often use lighter tools like [VSCode](https://code.visualstudio.com), [Sublime Text](https://www.sublimetext.com), or [Atom](https://atom.io). The CIS-1962 staff recommends **VSCode** because of its strong developer community, powerful extensions, and integrated terminal. However, all of these tools are loved for having built-in and downloadable extensions which improve the developer experience, like syntax highlighting, code completion, and automatic formatting.
 
-### Developing and testing JavaScript code
+<Alert mdx>
+**For Windows users:**
 
-There are many ways to test JS code. For simple syntax checking, the easiest way is often via the developer tools in your browser (like [Google Chrome](https://developers.google.com/web/tools/chrome-devtools/)) or by running the `node` command on its own in your terminal which gives you a Node-based JS REPL (type `Ctrl + C` to exit `node`).
+VSCode has a WSL extension which allows you to access your Linux subsystem's files and apps from a Windows VSCode installation. It should be automatically recommended if you have WSL installed, and once set up, you can open a WSL folder in VSCode by using the `code` command. Read [here](https://code.visualstudio.com/docs/remote/wsl) for more details.
 
-To test a JS file, navigate in your terminal to the directory where the file is located (if you're not sure how to do this, find an intro guide on how to using your terminal online). From there, you can run `node file-name`. Any `console.log` statement executed in your file will print out to the console of your terminal. This is also a good way to check for syntax errors. It can also be useful to make a new file specifically for testing functions in another file. In the test file, you can `require` the primary file and call functions there.
+</Alert>
+
+## Running your code
+
+There are many ways to test JS code. For simple syntax checking, the easiest way is often via the [developer tools](https://developers.google.com/web/tools/chrome-devtools/) in your browser or by running the `node` command on its own in your terminal, which gives you a Node-based JS REPL (type `Ctrl + D` to exit).
+
+To test a JS file, navigate in your terminal to the directory where the file is located (if you're not sure how to do this, find an intro guide on how to using your terminal online). From there, you can run `node <file-name>`. Any `console.log` statement executed in your file will print out to the console of your terminal. This is also a good way to check for syntax errors. It can also be useful to make a new file specifically for testing functions in another file. In the test file, you can `require` the primary file and call functions there.
+
+For testing TypeScript code, you will need some tool to transpile your scripts to JS before running them. For this we recommend the library [ts-node](https://www.npmjs.com/package/ts-node), which essentially acts just like Node, but attempts to transpile any TypeScript in files you run. You can install it globally by running `npm i -g ts-node`, but we recommend installing it as a `devDependency` in your projects as well.
 
 ### Using a linter
 
-A linter is a tool for checking that your JavaScript code both does not have syntax errors and is properly styled. In your homework assignments, you can see a `.eslintrc` file which specifies how to configure the linter to meet our preferred style guide for the course. You can learn more about ESLint [here.](https://eslint.org)
+A linter is a tool for checking that your JavaScript code both does not have syntax errors and is properly styled. In your homework assignments, you can see a `.eslintrc.json` file which specifies a configuration for [ESLint](https://eslint.org), the most widely-used JS linter, to meet our preferred style guide for the course.
 
-We recommend installing the ESLint package and related linter packages for your code editor of choice. Said packages will highlight issues with your code as you type so you can easily resolve them, much like a spell checker in Microsoft Word. You can also check for linter errors from your terminal via the `eslint` package [found here.](https://eslint.org/docs/user-guide/command-line-interface) This is what we run when you submit your assignment to Gradescope.
+We recommend installing the ESLint extension for your code editor of choice. Said extensions will highlight issues with your code as you type so you can easily resolve them, much like a spell checker in Microsoft Word. You can also check for linter errors from your terminal via the `eslint` npm package [found here.](https://eslint.org/docs/user-guide/command-line-interface) **This is what we run when you submit your assignment.**
+
+{/* TODO: figure out homework autograding mechanism */}
+
+<Alert type="warning">
+  Both ESLint and Prettier can be installed globally using `npm i -g <package-name>`, however we **don't recommend this**. Instead, install the `prettier` and `eslint` packages as `devDependencies` in any npm project you are working on, and configure your editor to use these versions found in `node_modules`.
+</Alert>
+
+### Using a formatter (optional)
+
+While linters are useful for finding problems, they typically don't deal with code formatting and visual style. Formatters instead focus on whitespace, newline placement, and other issues that impact the readability of code. We recommend using [Prettier](https://prettier.io/), which can handle many file types including JS and TS. Similar to ESLint, Prettier uses a `.prettierrc.json` file for configuration.
+
+<Alert type="info" mdx>
+  We recommend using ESLint and Prettier together. The `eslint-config-prettier` package ([found here](https://www.npmjs.com/package/eslint-config-prettier)) will disable any ESlint rules which conflict or are redundant with Prettier.
+  
+  In VSCode, you can use the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins at the same time. We recommend enabling the "Format on save" setting, and making Prettier the default formatter for maximum convenience.
+
+</Alert>
