@@ -15,7 +15,7 @@ import {
   HiOutlineChevronRight,
 } from 'react-icons/hi2';
 
-import { LECTURES, LectureSlug } from '@/constants/course-data';
+import { LECTURE_DATA, LectureSlug } from '@/constants/lectures';
 import { LECTURES_ROUTE } from '@/constants/routes';
 
 export default function Slideshow({ children }: { children: ReactNode }) {
@@ -116,7 +116,8 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     };
   }, [slides.length, nextSlide, prevSlide]);
 
-  const { number, name } = LECTURES[pathname.split('/').pop() as LectureSlug];
+  const { number, name } =
+    LECTURE_DATA[pathname.split('/').pop() as LectureSlug];
 
   return (
     <div className="mx-auto max-w-4xl p-3">

@@ -5,7 +5,7 @@ import { HiOutlineArrowPath } from 'react-icons/hi2';
 
 import Slideshow from './slideshow';
 
-import { LECTURES, LectureSlug } from '@/constants/course-data';
+import { LECTURE_DATA, LECTURE_SLUGS, LectureSlug } from '@/constants/lectures';
 import { TITLE_BASE } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
 import { lectureMdx } from '@/markdown/lectures/mdx';
@@ -13,19 +13,20 @@ import { lectureMdx } from '@/markdown/lectures/mdx';
 import './slides.scss';
 
 export function generateStaticParams() {
-  return Object.keys(LECTURES).map((slug) => ({
-    slug,
-  }));
+  return LECTURE_SLUGS.map((slug) => ({ slug }));
 }
 
-export const dynamicParams = false;
+const dynamicParams = false;
+export { dynamicParams };
+
+export const revalidate = 15;
 
 export function generateMetadata({
   params: { slug },
 }: {
   params: { slug: LectureSlug };
 }) {
-  const { name, number } = LECTURES[slug];
+  const { name, number } = LECTURE_DATA[slug];
   return {
     title: `${TITLE_BASE} | Lecture ${number} - ${name}`,
   } satisfies Metadata;
@@ -54,7 +55,7 @@ export default function LecturePage({
   params: { slug: string };
 }) {
   // we know slug exists because of dynamicParams option
-  const { date } = LECTURES[slug as LectureSlug];
+  const { date } = LECTURE_DATA[slug as LectureSlug];
 
   // check if assignment unlocked
   if (Date.now() < date) {

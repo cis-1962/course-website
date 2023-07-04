@@ -1,6 +1,6 @@
 import hw01 from './1-data-wrangling.mdx';
 
-import { AssignmentSlug } from '@/constants/course-data';
+import { AssignmentSlug } from '@/constants/assignments';
 
 export const assignmentMdx: {
   [key in AssignmentSlug]: (props: any) => JSX.Element;
