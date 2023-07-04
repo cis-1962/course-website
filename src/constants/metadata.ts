@@ -11,7 +11,7 @@ export const DEFAULT_METADATA = {
   openGraph: {
     type: 'website',
     title: 'CIS-1962: JavaScript',
-    images: ['/images/og-image.png'],
+    images: ['/images/meta/og-image.png'],
   },
   alternates: {
     canonical: '/',

@@ -77,6 +77,10 @@ body {
       @apply font-mono dark:font-normal;
     }
 
+    p > code {
+      @apply rounded-md px-1 ring-1 ring-neutral-300 dark:ring-gray-700;
+    }
+
     pre > code {
       @apply block p-[1em] transition-colors;
 
