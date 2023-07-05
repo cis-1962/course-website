@@ -16,7 +16,12 @@ export default function StaffPage() {
       {STAFF.map(({ name, role, email, description, image }) => (
         <figure key={email}>
           <div className="relative aspect-square overflow-hidden rounded-xl">
-            <Image alt={name} src={`${STAFF_IMAGE_FOLDER}/${image}`} fill />
+            <Image
+              alt={name}
+              src={`${STAFF_IMAGE_FOLDER}/${image}`}
+              fill
+              className="object-cover"
+            />
           </div>
           <figcaption>
             <h2 className="mt-4 font-display text-3xl font-bold tracking-[-0.01em] dark:font-semibold">
