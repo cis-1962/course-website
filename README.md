@@ -12,6 +12,8 @@ Make sure to `npm install`, then run a dev server with `npm run dev` and test a 
 
 ## CI/CD
 
+[![Deploy site to Pages](https://github.com/cis-1962/course-website/actions/workflows/deploy.yml/badge.svg)](https://github.com/cis-1962/course-website/actions/workflows/deploy.yml)
+
 The `deploy` action creates a new build every day and uploads it to the Penn servers.
 
-**Note: Currently we only upload to GitHub Pages on every push.**
+**Note: Currently we only upload to GitHub Pages on every push to `main`.**
