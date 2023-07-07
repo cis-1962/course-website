@@ -24,14 +24,23 @@
       { "object": true, "array": false },
       { "enforceForRenamedProperties": true }
     ],
+    "consistent-return": "off",
+    "import/prefer-default-export": "off",
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": false
+      }
+    ],
     "@typescript-eslint/strict-boolean-expressions": [
       "error",
       {
         "allowString": true,
         "allowNumber": true,
         "allowNullableObject": true,
-        "allowNullableBoolean": false,
+        "allowNullableBoolean": true,
         "allowNullableString": false,
         "allowNullableNumber": false,
         "allowAny": false
@@ -40,12 +49,15 @@
 
     // react
     "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
     "react/jsx-filename-extension": [
       "error",
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
 
     // unicorn
-    "unicorn/prevent-abbreviations": "off"
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/prefer-top-level-await": "off",
+    "unicorn/no-array-for-each": "off"
   }
 }

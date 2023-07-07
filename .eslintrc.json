@@ -1,22 +1,63 @@
 {
   "extends": [
-    "plugin:import/recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react/recommended",
-    "plugin:react-hooks/recommended",
+    "airbnb",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:unicorn/recommended",
     "next/core-web-vitals",
     "prettier"
   ],
   "plugins": ["unused-imports"],
+  "parserOptions": { "project": "./tsconfig.json" },
   "rules": {
+    // syntax rules
+    "prefer-destructuring": [
+      "error",
+      { "object": true, "array": false },
+      { "enforceForRenamedProperties": true }
+    ],
+    "consistent-return": "off",
+    "import/prefer-default-export": "off",
+    "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    "@typescript-eslint/no-use-before-define": [
+      "error",
+      {
+        "functions": false,
+        "classes": false
+      }
+    ],
+    "@typescript-eslint/strict-boolean-expressions": [
+      "error",
+      {
+        "allowString": true,
+        "allowNumber": true,
+        "allowNullableObject": true,
+        "allowNullableBoolean": true,
+        "allowNullableString": false,
+        "allowNullableNumber": false,
+        "allowAny": false
+      }
+    ],
+
+    // react
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
+    ],
+
+    // unicorn
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/prefer-top-level-await": "off",
+    "unicorn/no-array-for-each": "off",
+
     "import/order": [
       "warn",
       { "newlines-between": "always", "alphabetize": { "order": "asc" } }
     ],
-    "unicorn/prevent-abbreviations": "off",
-    "unicorn/prefer-top-level-await": "off",
-    "no-console": "warn",
 
     // unused imports
     "no-unused-vars": "off",

@@ -24,7 +24,9 @@ export function generateMetadata({
 }: {
   params: { slug: AssignmentSlug };
 }) {
-  const { number, name } = ASSIGNMENT_DATA[slug];
+  const {
+    [slug]: { number, name },
+  } = ASSIGNMENT_DATA;
   return {
     title: `${TITLE_BASE} | HW${number} - ${name}`,
   } satisfies Metadata;
@@ -36,14 +38,16 @@ export default function AssignmentPage({
   params: { slug: string };
 }) {
   // we know slug exists because of dynamicParams option
-  const { number, name, unlocks } = ASSIGNMENT_DATA[slug as AssignmentSlug];
+  const {
+    [slug as AssignmentSlug]: { number, name, unlocks },
+  } = ASSIGNMENT_DATA;
 
   // check if assignment unlocked
   if (Date.now() < unlocks) {
     redirect(ASSIGNMENTS_ROUTE);
   }
 
-  const Mdx = assignmentMdx[slug as AssignmentSlug];
+  const { [slug as AssignmentSlug]: Mdx } = assignmentMdx;
   return (
     <div className="mdx">
       <h1>
