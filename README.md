@@ -1,10 +1,6 @@
 ## Development
 
-This repository uses a private git submodule for course content. To clone the submodule (assuming you have the permissions) run:
-
-```sh
-git submodule init && git submodule update
-```
+This repository uses a private git submodule for course content. To clone the submodule (assuming you have the permissions) run `git submodule update --init`.
 
 Then make sure to commit the submodule hash to this repository whenever we want to update the content. This can be done just using `git add .`.
 
