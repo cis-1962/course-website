@@ -5,212 +5,139 @@ export const metadata = {
   title: `${TITLE_BASE} | Style Guidelines`,
 };
 
-## Code Style
+## 🖌️ Code style
 
-Code style is extremely important when developing code that you hope to last
-longer than its first writing. This is especially important with JavaScript
-because the interpreter is very tolerant and will allow a great deal of
-syntactic mistakes to pass undetected when code is executed. JS developers must
-exhibit great discipline in writing idiomatic code that is easily readable to
-all other developers.
+Code style is extremely important when developing code that lasts. This is especially important with JavaScript because the interpreter is _very tolerant_ and will allow a great deal of syntactic mistakes to pass undetected when code is executed. JS developers must exhibit great discipline in writing idiomatic code that is easily readable to all other developers.
 
-Because of this, we're going to be adhering to a style guide for code written in this class. If you ever go out and write code professionally, you would do
-well to adhere to a structured style guide as well.
+Because of this, we're going to be adhering to a style guide for code written in this class. If you ever go out and write code professionally, you would do well to adhere to a structured style guide as well.
 
 <Alert type="danger">
-  For each type of style mistake (syntax/ ESLint), 0.5 points will be deducted.
+  For every ESLint error, 0.5 points will be deducted, and if your codebase is
+  formatted, 2.5 points will be added. Make sure to lint and format your code!
 </Alert>
 
-### Syntax
+## 🛠️ Linting and formatting
 
-- object/array destructuring and structuring
+In order to do ensure that your JavaScript submissions adhere to this style guide, we will be using [ESLint](http://eslint.org/). You should definitely **check your code style with ESLint before submitting.** If you are not following the rules, 0.5 style point will be deducted for each type of error.
 
-```javascript
-// const key = obj.key (x)
-const { key } = obj
+For each homework, you will have to set up ESLint by following the steps in the [development guide](/development) (if it is not provided in the stub file). Our configuration for ESLint is based on the AirBNB style guide, which (believe it or not) is one of the most consistently used and loved configs out there. We also use a plugin called Unicorn which enables some unique good practice rules.
 
-// const otherKey = obj.key (x)
-const { key: otherKey } = obj
+Because code readability includes formatting, we give some extra credit for formatting your code. Our setup is configured up to use Prettier, a popular formatter for web development.
 
-const a = 1
-const b = 1
+<Alert mdx type="warning">
+  We will run ESLint on your code using this set of rules, so do not modify the
+  rules yourself _unless_ you want to add extra errorring rules! If you ever
+  encounter an error message from ESLint that you don't understand, look it up
+  and you will find explanatory documentation.
+</Alert>
 
-// const obj = { a: a, b: b } (x)
-const obj = { a, b }
+## ✏️ Syntax
 
-const obj = { key1: a, key2: b } // this is fine because key names are different
+- Use object destructuring and structuring
 
-// const func = obj => { const { key } = obj ... } (x)
-const func = ({ key }) => { ... }
+```ts
+// ❌ incorrect - no destructuring
+const key = obj.key;
+const someVariable = obj.key;
+
+// ✅ correct - destructuring
+const { key } = obj;
+const { key: someVariable } = obj;
 ```
 
-- omit explicit boolean testing whenever possible (examples below are only to illustrate this concept, they are not exclusive)
+```ts
+const a = 1;
+const b = 2;
 
-```js
-const b = true
-// if (b == True) {...} (x)
-if (b) {...}
+// ❌ incorrect - redundant key names
+const obj = { a: a, b: b };
 
-const obj = null
-//  if (obj != null) {...} (x)
-if (obj) {...}
-
-const num = 0
-// if (num != 0) {...} (x)
-if (num) {...}
+// ✅ correct - structuring
+const obj = { a, b };
+const obj = { key1: a, key2: b }; // this is fine because key names are different
 ```
 
-- use ternary expression instead of `if/else` block whenever possible
+- Omit boolean literal comparisons
 
-```js
+```ts
+// ❌ incorrect
+if (b === true) { ... }
+
+// ✅ correct
+if (b) { ... }
+```
+
+- Explicitly handle `undefined` for numbers and strings
+
+```ts
+let optNumber: number | undefined = 0;
+let optString: string | undefined = 'hello!';
+let optObject: { ... } | undefined = { ... };
+
+// ❌ incorrect - must handle nullable numbers and strings
+if (optString) { ... };
+if (optNumber) { ... };
+
+// ✅ correct - handle undefined case
+if (optNumber !== undefined) { ... };
+if (optString !== undefined) { ... };
+if (optObject) { ... }; // this is ok! objects are always truthy
+```
+
+- Use ternary expression instead of `if/else` block whenever possible
+
+```ts
+// ❌ incorrect
 let a;
-const b = true;
+if (b) {
+  a = 3;
+} else {
+  a = 2;
+}
 
-// if (b) { a = 3 } else { a = 2 } (x)
-a = b ? 3 : 2;
+// ✅ correct
+let a = b ? 3 : 2;
 ```
 
-- `===` and `!==` instead of `==` and `!=`
-- no `()` around function inputs if there is only 1 inputs
+- Use `===` and `!==` instead of `==` and `!=`
 
-```js
-// const func = (a) => a (x)
+- Use `undefined` instead of `null`
+
+- No `{}` and `return` when the function body is one line
+
+```ts
+// ❌ incorrect
+const func = (a) => {
+  return a;
+};
+
+// ✅ correct
 const func = (a) => a;
 ```
 
-- no `{}` and `return` when the function body takes one line only
+- Declare functions with either `=>` or `function`
 
-```js
-// const func = a => { return a } (x)
-const func = (a) => a;
+```ts
+// ✅ both correct
+const func = (...) => {};
+const func = function (...) {};
 ```
 
-- function declaration using either `=>` or `function`
+- Use `let` or `const` for variable declaration instead of `var`
+- Use template literals instead of string concatenation
 
-```js
-const func = (...) => {}
-
-const func = function (...) {}
-```
-
-- `let` or `const` for variable declaration instead of `var`
-- template literals instead of string concatenation
-
-```js
+```ts
 const s1 = 'the result of 3 + 3 is';
 const s2 = 6;
 
-// const newString = str1 + str2 (x)
+// ❌ incorrect
+const newString = s1 + ' ' + s2;
+// ✅ correct
 const newString = `${s1} ${s2}`;
 ```
 
-- no `console.log()` statements
+- No `console.log()` statements
 
-### ESLint
-
-In order to do ensure that your JavaScript submissions adhere to this style guide, we will be using [ESLint](http://eslint.org/).
-You should definitely check your code style with ESLint before submitting.
-If you are not following the rules, 0.5 style point will be deducted for each type of error.
-
-For each homework, you will have to set up ESLint by following the steps below (if it is not provided in the stub file).
-The rules are used in [Airbnb](https://www.npmjs.com/package/eslint-config-airbnb), which are among the best-accepted and most general JavaScript style guidelines.
-
-Create a file called `.eslintrc` at the root directory. Copy and paste the following rules.
-We will run ESLint on your code using this set of rules, so do not modify the rules yourself!
-If you ever encounter an error message from ESLint that you don't understand, just Google it up.
-If you are still unsure, post on CW and we are very happy to help :-)
-
-```json
-{
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
-  },
-  "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "brace-style": [2, "1tbs"],
-    "camelcase": 0,
-    "no-bitwise": 2,
-    "no-empty": 2,
-    "no-ex-assign": 2,
-    "no-lonely-if": 2,
-    "no-mixed-spaces-and-tabs": 2,
-    "no-tabs": 2,
-    "no-underscore-dangle": 0,
-    "no-unused-vars": 0,
-    "quote-props": [2, "as-needed"],
-    "quotes": [
-      2,
-      "single",
-      { "avoidEscape": true, "allowTemplateLiterals": true }
-    ],
-    "strict": 0,
-    "semi": ["error", "never"], // require or disallow use of semicolons instead of ASI,
-    "arrow-parens": ["error", "as-needed"], // require the use of parenthesis when needed
-    "prefer-destructuring": [
-      "error",
-      { "array": true, "object": true },
-      { "enforceForRenamedProperties": true }
-    ],
-    "eqeqeq": ["error", "smart"],
-    "prefer-template": "error",
-    "react/jsx-filename-extension": 0,
-    "react/prop-types": 0,
-    "no-plusplus": 0,
-    "max-len": 0,
-    "react/jsx-props-no-spreading": 0,
-    "jsx-a11y/label-has-associated-control": 0,
-    "jsx-a11y/img-redundant-alt": 0
-  },
-  "parserOptions": {
-    "ecmaVersion": 2017
-  }
-}
-```
-
-The specific definitions for these rules can be found in [the ESLint rules documentation.](http://eslint.org/docs/rules/) Including them in your final project would probably be a good idea as well - it could save you a great deal of trouble down the line!
-
-Your file structure should now look similar to this.
-
-![file hierarchy](https://i.ibb.co/YjjfvCJ/Screen-Shot-2020-09-13-at-9-51-51-PM.png)
-
-In `package.json`, you should add the following packages
-
-```json
-  "devDependencies": {
-    "eslint-plugin-import": "^2.21.2",
-    "eslint-plugin-jsx-a11y": "^6.3.0",
-    "eslint-plugin-react": "^7.20.0",
-    "eslint-plugin-react-hooks": "^4 || ^3 || ^2.3.0 || ^1.7.0",
-    ...
-  },
-  "dependencies": {
-    "eslint": "^6.8.0",
-    "eslint-config-airbnb": "^18.2.0",
-    "babel-eslint": "^10.1.0",
-    ...
-  }
-```
-
-Your `package.json` should look similar to this
-
-![package.json](https://i.ibb.co/Qncq6pg/package.png)
-
-Make sure you are using VSCode and install the ESLint extension if you have not done so.
-
-![eslint-vscode-extension](https://i.ibb.co/S6Lmp9f/Screen-Shot-2020-09-13-at-9-10-48-PM.png)
-
-Now, run `npm install` in your command-line tools/ terminal. After the installation is complete,
-open VS Code, and you should be able to see ESLint complaining if you are using bad styles :)
-
-![eslint-example](https://i.ibb.co/hsDbZqq/Screen-Shot-2020-09-13-at-9-37-09-PM.png)
-
-If you want to see a summary of all errors in your terminal like the following, please follow the remaining steps
-
-![eslint-terminal](https://i.ibb.co/F0nkfMz/Screen-Shot-2021-10-09-at-12-14-32-PM.png)
-
-1. Install ESLint package globally by running `npm i -g eslint`
-2. Change directory to the folder which contains files you want ESLint to examine and run `eslint ./`
-3. Your terminal should now print all the error messages
+<Alert mdx>
+  There are more rules we didn't mention here that exist in the ESLint configuration. If you encounter one which needs to be broken under a specific circumstance, use `// eslint-disable-next-line <rule-name>` to disable it for whichever line it occurs on. **You must have good reason to do this!**
+</Alert>

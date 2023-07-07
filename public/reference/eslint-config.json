@@ -1,4 +1,10 @@
 {
+  "root": true,
+  "env": {
+    "node": true,
+    "browser": true,
+    "es6": true
+  },
   "extends": [
     "airbnb",
     "airbnb-typescript",
@@ -6,11 +12,11 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:unicorn/recommended",
-    "next/core-web-vitals",
     "prettier"
   ],
-  "plugins": ["unused-imports"],
-  "parserOptions": { "project": "./tsconfig.json" },
+  "parserOptions": {
+    "project": "./tsconfig.json"
+  },
   "rules": {
     // syntax rules
     "prefer-destructuring": [
@@ -52,15 +58,6 @@
     // unicorn
     "unicorn/prevent-abbreviations": "off",
     "unicorn/prefer-top-level-await": "off",
-    "unicorn/no-array-for-each": "off",
-
-    "import/order": [
-      "warn",
-      { "newlines-between": "always", "alphabetize": { "order": "asc" } }
-    ],
-
-    // unused imports
-    "no-unused-vars": "off",
-    "unused-imports/no-unused-imports": "warn"
+    "unicorn/no-array-for-each": "off"
   }
 }

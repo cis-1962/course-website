@@ -24,7 +24,7 @@ export function EmailCopyButton({ email }: { email: string }) {
       <button
         type="button"
         onClick={() => {
-          navigator.clipboard.writeText(email);
+          navigator.clipboard.writeText(email).catch(() => {});
           setCopied(true);
         }}
         className="flex items-center p-1 hover:opacity-80"

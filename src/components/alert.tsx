@@ -36,7 +36,7 @@ export function Alert({
   hideIcon?: boolean;
   mdx?: boolean;
 }) {
-  const Icon = alertIcons[type];
+  const { [type]: Icon } = alertIcons;
   return (
     <div
       className={`grid-flow-row grid-cols-[auto_1fr] items-center rounded-md ring-1 sm:grid ${alertStyles[type]}`}

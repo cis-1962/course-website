@@ -28,17 +28,23 @@ export default function Slideshow({ children }: { children: ReactNode }) {
 
     const childrenArray = React.Children.toArray(children);
     let currentGeneratingSlide: ReactNode[] = [];
-    for (const child of childrenArray) {
-      if (child && (child as { type?: string }).type === 'hr') {
+    childrenArray.forEach((child) => {
+      if (
+        (typeof child === 'object' || typeof child === 'string') &&
+        (child as { type?: string }).type === 'hr'
+      ) {
         // check for class list
         if (currentGeneratingSlide[0] === '\n') {
           currentGeneratingSlide.splice(0, 1);
         }
-        const classString: string | undefined = (
-          currentGeneratingSlide[0] as { props?: { [key: string]: any } }
-        )?.props?.children; // ?.[0] as string | undefined;
+        const classString = (
+          currentGeneratingSlide[0] as { props?: { [key: string]: unknown } }
+        )?.props?.children;
         let className = '';
-        if (classString && classString.startsWith('class:')) {
+        if (
+          typeof classString === 'string' &&
+          classString.startsWith('class:')
+        ) {
           currentGeneratingSlide.splice(0, 1);
           const split = classString.slice(7).split(',');
           className = split.join(' ');
@@ -48,7 +54,7 @@ export default function Slideshow({ children }: { children: ReactNode }) {
       } else {
         currentGeneratingSlide.push(child);
       }
-    }
+    });
     return generatedSlides;
   }, [children]);
 
@@ -56,9 +62,9 @@ export default function Slideshow({ children }: { children: ReactNode }) {
   const urlSlide = useMemo(() => {
     try {
       const slideString = searchParams.get('slide');
-      if (!slideString) throw 'argh';
-      const parsed = Number.parseInt(slideString);
-      if (Number.isNaN(parsed)) throw 'aargh';
+      if (slideString === null) throw new Error('Slide not found');
+      const parsed = Number.parseInt(slideString, 10);
+      if (Number.isNaN(parsed)) throw new Error('Slide number not parsed');
       return Math.max(Math.min(parsed - 1, slides.length - 1), 0);
     } catch {
       return 0;
@@ -73,11 +79,11 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     (pairs: { [key: string]: string }) => {
       const params = new URLSearchParams(
         // NOTE: we can do this evil cast because this is in Next docs
-        searchParams as any as URLSearchParams
+        searchParams as unknown as URLSearchParams
       );
-      for (const [key, value] of Object.entries(pairs)) {
+      Object.entries(pairs).forEach(([key, value]) => {
         params.set(key, value);
-      }
+      });
       return params.toString();
     },
     [searchParams]
@@ -116,8 +122,9 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     };
   }, [slides.length, nextSlide, prevSlide]);
 
-  const { number, name } =
-    LECTURE_DATA[pathname.split('/').pop() as LectureSlug];
+  const {
+    [pathname.split('/').pop() as LectureSlug]: { number, name },
+  } = LECTURE_DATA;
 
   return (
     <div className="mx-auto max-w-4xl p-3">
@@ -158,7 +165,7 @@ export default function Slideshow({ children }: { children: ReactNode }) {
           </button>
         </div>
       </nav>
-      <main className={`mdx slides ${slides[currentSlide].className}`}>
+      <main className={`mdx slides ${slides[currentSlide].className ?? ''}`}>
         {slides[currentSlide].slide}
       </main>
     </div>

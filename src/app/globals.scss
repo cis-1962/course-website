@@ -69,23 +69,19 @@ body {
       @apply dark:font-bold;
     }
 
-    pre {
-      @apply overflow-hidden rounded-md ring-1 ring-neutral-300 dark:ring-gray-700;
-    }
-
     code {
-      @apply font-mono dark:font-normal;
+      @apply rounded-md px-1 font-mono ring-1 ring-neutral-300 dark:font-normal dark:ring-gray-700;
     }
 
-    p > code {
-      @apply rounded-md px-1 ring-1 ring-neutral-300 dark:ring-gray-700;
-    }
+    pre {
+      @apply overflow-x-auto rounded-md ring-1 ring-neutral-300 dark:ring-gray-700;
 
-    pre > code {
-      @apply block p-[1em] transition-colors;
+      & > code {
+        @apply block px-4 py-[1em] ring-0 transition-colors;
 
-      * {
-        @apply transition-colors;
+        * {
+          @apply transition-colors;
+        }
       }
     }
 
