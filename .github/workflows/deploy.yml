@@ -29,8 +29,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      - name: Checkout submodules
-        run: 'git submodule update --init --recursive'
+        with:
+          token: ${{ secrets.PRIVATE_PAT }}
+          submodules: recursive
       - name: Copy public folder from course-content
         run: 'cp -a ./src/course-content/public/. ./out/'
       - name: Setup Node
