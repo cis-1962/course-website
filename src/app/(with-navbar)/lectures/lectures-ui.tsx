@@ -4,9 +4,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { HiOutlineChevronRight, HiOutlineLockClosed } from 'react-icons/hi2';
 
-import { LectureNode } from './page';
-
-import { LECTURES } from '@/constants/course-data';
+import { LectureNode, LECTURE_DATA } from '@/constants/lectures';
 import { LECTURES_ROUTE } from '@/constants/routes';
 
 function LectureSection({
@@ -57,7 +55,7 @@ const dateFormatter = Intl.DateTimeFormat('en-US', {
 export function LectureNodeElement({ node }: { node: LectureNode }) {
   if (node.slug) {
     // leaf node
-    const { name, number, date } = LECTURES[node.slug];
+    const { name, number, date } = LECTURE_DATA[node.slug];
     const isUnlocked = Date.now() > date;
     const dateString = dateFormatter.format(new Date(date));
     return (

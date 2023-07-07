@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { HiOutlineLockClosed } from 'react-icons/hi2';
 
-import { ASSIGNMENTS } from '@/constants/course-data';
+import { ASSIGNMENT_DATA } from '@/constants/assignments';
 import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
 
@@ -37,7 +37,7 @@ export default function AssignmentsPage() {
   return (
     <>
       <ul className="select-none grid-flow-row grid-cols-[auto_1fr_auto_auto] items-center gap-y-4 md:grid">
-        {Object.entries(ASSIGNMENTS).map(
+        {Object.entries(ASSIGNMENT_DATA).map(
           ([slug, { name, number, unlocks, due }]) => {
             const isUnlocked = unlocks < Date.now();
             return (
