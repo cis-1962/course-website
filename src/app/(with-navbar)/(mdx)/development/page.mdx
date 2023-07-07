@@ -5,7 +5,7 @@ export const metadata = {
   title: `${TITLE_BASE} | Development`,
 };
 
-## Intro
+## 💻 Development
 
 There are many ways to write JavaScript, and JavaScript is used for many different purposes, from mobile apps to command line scripts, and of course in the browser. This is a guide for how you can get started writing JS in an environment that will suit you well for this course and future projects you take on in JS.
 
@@ -25,7 +25,7 @@ If you're on Windows, follow [this guide](https://learn.microsoft.com/en-us/wind
   will work with you to mitigate these problems!
 </Alert>
 
-## Installing node
+## ⚙️ Installing node
 
 JavaScript was originally written to bring dynamic content to HTML and CSS websites, and for a long time only ran in browsers. **Node (Node.js)** is a JS runtime that operates anywhere and everywhere, not just in the browser. **Node Package Manager (npm)** is the system that Node uses for installing dependencies (packages) for a project, letting you take advantage of frameworks, functions, and tools that other people have written.
 
@@ -49,7 +49,7 @@ nvm install --lts
 
 To assert everything installed correctly, run `node -v`. You should get back something like `18.16.1`.
 
-## Picking a code editor
+## 📝 Picking a code editor
 
 Few people write JS in full-fledged IDE's in the way you might be used to running Java in Eclipse or IntelliJ. Though there are solutions for this (like [Webstorm](https://www.jetbrains.com/webstorm/)) these often introduce overhead and unnecessary complexity.
 
@@ -62,7 +62,7 @@ VSCode has a WSL extension which allows you to access your Linux subsystem's fil
 
 </Alert>
 
-## Running your code
+## ▶️ Running your code
 
 There are many ways to test JS code. For simple syntax checking, the easiest way is often via the [developer tools](https://developers.google.com/web/tools/chrome-devtools/) in your browser or by running the `node` command on its own in your terminal, which gives you a Node-based JS REPL (type `Ctrl + D` to exit).
 
@@ -70,7 +70,7 @@ To test a JS file, navigate in your terminal to the directory where the file is 
 
 For testing TypeScript code, you will need some tool to transpile your scripts to JS before running them. For this we recommend the library [ts-node](https://www.npmjs.com/package/ts-node), which essentially acts just like Node, but attempts to transpile any TypeScript in files you run. You can install it globally by running `npm i -g ts-node`, but we recommend installing it as a `devDependency` in your projects as well.
 
-### Using a linter
+## 💅 Linters and formatters
 
 A linter is a tool for checking that your JavaScript code both does not have syntax errors and is properly styled. In your homework assignments, you can see a `.eslintrc.json` file which specifies a configuration for [ESLint](https://eslint.org), the most widely-used JS linter, to meet our preferred style guide for the course.
 
@@ -82,13 +82,29 @@ We recommend installing the ESLint extension for your code editor of choice. Sai
   Both ESLint and Prettier can be installed globally using `npm i -g <package-name>`, however we **don't recommend this**. Instead, install the `prettier` and `eslint` packages as `devDependencies` in any npm project you are working on, and configure your editor to use these versions found in `node_modules`.
 </Alert>
 
-### Using a formatter (optional)
-
-While linters are useful for finding problems, they typically don't deal with code formatting and visual style. Formatters instead focus on whitespace, newline placement, and other issues that impact the readability of code. We recommend using [Prettier](https://prettier.io/), which can handle many file types including JS and TS. Similar to ESLint, Prettier uses a `.prettierrc.json` file for configuration.
+While linters are useful for finding problems, they typically don't deal with code formatting and visual style. Formatters instead focus on whitespace, newline placement, and other issues that impact the readability of code. We recommend [Prettier](https://prettier.io/), which can handle many languages including JS and TS. Similar to ESLint, Prettier uses a `.prettierrc.json` file for configuration.
 
 <Alert type="info" mdx>
-  We recommend using ESLint and Prettier together. The `eslint-config-prettier` package ([found here](https://www.npmjs.com/package/eslint-config-prettier)) will disable any ESlint rules which conflict or are redundant with Prettier.
+  We recommend using ESLint and Prettier together. The `eslint-config-prettier` package (included in our provided configuration) will disable any ESlint rules which conflict or are redundant with Prettier.
   
-  In VSCode, you can use the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins at the same time. We recommend enabling the "Format on save" setting, and making Prettier the default formatter for maximum convenience.
+  In VSCode, you can use the [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) plugins at the same time. We recommend enabling the "Format on save" setting, and making Prettier the editor's default formatter for maximum convenience.
 
 </Alert>
+
+## ⚙️ Installing ESLint + Prettier
+
+You will need to install these dependencies per-project. Make sure you have an existing `package.json`.
+
+- Install ESLint, Prettier, and our config's dependencies into your project by running:
+
+```sh
+npm install -D eslint prettier eslint-config-airbnb eslint-config-airbnb-typescript \
+               eslint-config-prettier eslint-plugin-unicorn
+npx install-peerdeps -D eslint-config-airbnb
+npx install-peerdeps -D eslint-config-airbnb-typescript
+```
+
+- Create a file called `.eslintrc.json` at the root directory. Copy and paste the contents of [this file](/reference/eslint-config.json).
+- Create a file called `.prettierrc.json` also at the root directory. Copy and paste [this file](/reference/prettier-config.json).
+- Make sure you have both the ESLint and Prettier extensions installed in your editor of choice.
+- Your editor should pick up the configurations (probably after a restart) and start giving you error messages and formatting options. Again, we recommend enabling "format on save" in your editor of choice.
