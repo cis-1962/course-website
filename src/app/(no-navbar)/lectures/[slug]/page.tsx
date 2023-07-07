@@ -5,10 +5,14 @@ import { HiOutlineArrowPath } from 'react-icons/hi2';
 
 import Slideshow from './slideshow';
 
-import { LECTURE_DATA, LECTURE_SLUGS, LectureSlug } from '@/constants/lectures';
 import { TITLE_BASE } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
-import { lectureMdx } from '@/markdown/lectures/mdx';
+import {
+  LECTURE_DATA,
+  LECTURE_SLUGS,
+  LectureSlug,
+} from '@/course-content/lectures/constants';
+import { lectureMdx } from '@/course-content/lectures/mdx';
 
 import './slides.scss';
 

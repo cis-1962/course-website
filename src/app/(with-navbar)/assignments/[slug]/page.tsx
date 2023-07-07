@@ -1,14 +1,14 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
+import { TITLE_BASE } from '@/constants/metadata';
+import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
 import {
   ASSIGNMENT_DATA,
   ASSIGNMENT_SLUGS,
   AssignmentSlug,
-} from '@/constants/assignments';
-import { TITLE_BASE } from '@/constants/metadata';
-import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
-import { assignmentMdx } from '@/markdown/assignments/mdx';
+} from '@/course-content/assignments/constants';
+import { assignmentMdx } from '@/course-content/assignments/mdx';
 
 export function generateStaticParams() {
   return ASSIGNMENT_SLUGS.map((slug) => ({ slug }));

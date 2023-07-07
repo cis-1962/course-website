@@ -4,8 +4,8 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { HiOutlineChevronRight, HiOutlineLockClosed } from 'react-icons/hi2';
 
-import { LectureNode, LECTURE_DATA } from '@/constants/lectures';
 import { LECTURES_ROUTE } from '@/constants/routes';
+import { LectureNode, LECTURE_DATA } from '@/course-content/lectures/constants';
 
 function LectureSection({
   node: { children, sectionName },

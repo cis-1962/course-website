@@ -15,8 +15,8 @@ import {
   HiOutlineChevronRight,
 } from 'react-icons/hi2';
 
-import { LECTURE_DATA, LectureSlug } from '@/constants/lectures';
 import { LECTURES_ROUTE } from '@/constants/routes';
+import { LECTURE_DATA, LectureSlug } from '@/course-content/lectures/constants';
 
 export default function Slideshow({ children }: { children: ReactNode }) {
   const searchParams = useSearchParams();

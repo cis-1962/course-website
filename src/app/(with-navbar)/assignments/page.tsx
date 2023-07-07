@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { HiOutlineLockClosed } from 'react-icons/hi2';
 
-import { ASSIGNMENT_DATA } from '@/constants/assignments';
 import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
+import { ASSIGNMENT_DATA } from '@/course-content/assignments/constants';
 
 export const metadata = {
   title: `${TITLE_BASE} | Assigments`,
@@ -21,6 +21,7 @@ const spanFormatter = new Intl.RelativeTimeFormat('en-US', { style: 'long' });
 
 const oneDay = 1000 * 60 * 60 * 24;
 const oneHour = 1000 * 60 * 60;
+// TODO: make sure this works with our static export solution
 function formatDaysTill(time: number) {
   const baseDate = dateFormatter.format(time);
   const timeTill = time - Date.now();
