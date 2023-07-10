@@ -4,7 +4,7 @@ import { HiOutlineLockClosed } from 'react-icons/hi2';
 
 import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
-import { ASSIGNMENT_DATA } from '@/course-content/assignments/constants';
+import { ASSIGNMENT_DATA } from '@/course-content/assignments/meta';
 
 export const metadata = {
   title: `${TITLE_BASE} | Assigments`,

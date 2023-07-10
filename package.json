@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "serve out",
     "lint": "next lint",
-    "prettier": "prettier -w ."
+    "format": "prettier -w ."
   },
   "dependencies": {
     "@mdx-js/loader": "^2.3.0",
