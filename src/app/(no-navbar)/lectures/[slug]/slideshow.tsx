@@ -28,33 +28,40 @@ export default function Slideshow({ children }: { children: ReactNode }) {
 
     const childrenArray = React.Children.toArray(children);
     let currentGeneratingSlide: ReactNode[] = [];
+
+    function addCurrentSlide() {
+      // check for class list
+      if (currentGeneratingSlide[0] === '\n') {
+        currentGeneratingSlide.splice(0, 1);
+      }
+      const classString = (
+        currentGeneratingSlide[0] as { props?: { [key: string]: unknown } }
+      )?.props?.children;
+      let className = '';
+      if (typeof classString === 'string' && classString.startsWith('class:')) {
+        currentGeneratingSlide.splice(0, 1);
+        const split = classString.slice(7).split(',');
+        className = split.join(' ');
+      }
+
+      generatedSlides.push({ slide: currentGeneratingSlide, className });
+      currentGeneratingSlide = [];
+    }
+
     childrenArray.forEach((child) => {
       if (
         (typeof child === 'object' || typeof child === 'string') &&
         (child as { type?: string }).type === 'hr'
       ) {
-        // check for class list
-        if (currentGeneratingSlide[0] === '\n') {
-          currentGeneratingSlide.splice(0, 1);
-        }
-        const classString = (
-          currentGeneratingSlide[0] as { props?: { [key: string]: unknown } }
-        )?.props?.children;
-        let className = '';
-        if (
-          typeof classString === 'string' &&
-          classString.startsWith('class:')
-        ) {
-          currentGeneratingSlide.splice(0, 1);
-          const split = classString.slice(7).split(',');
-          className = split.join(' ');
-        }
-        generatedSlides.push({ slide: currentGeneratingSlide, className });
-        currentGeneratingSlide = [];
+        addCurrentSlide();
       } else {
         currentGeneratingSlide.push(child);
       }
     });
+
+    // add final slide
+    addCurrentSlide();
+
     return generatedSlides;
   }, [children]);
 
