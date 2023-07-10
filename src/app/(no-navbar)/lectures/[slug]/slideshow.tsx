@@ -16,7 +16,7 @@ import {
 } from 'react-icons/hi2';
 
 import { LECTURES_ROUTE } from '@/constants/routes';
-import { LECTURE_DATA, LectureSlug } from '@/course-content/lectures/constants';
+import { LECTURE_DATA, LectureSlug } from '@/course-content/lectures/meta';
 
 export default function Slideshow({ children }: { children: ReactNode }) {
   const searchParams = useSearchParams();

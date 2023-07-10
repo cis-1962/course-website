@@ -7,12 +7,12 @@ import Slideshow from './slideshow';
 
 import { TITLE_BASE } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
+import { lectureMdx } from '@/course-content/lectures/mdx';
 import {
   LECTURE_DATA,
   LECTURE_SLUGS,
   LectureSlug,
-} from '@/course-content/lectures/constants';
-import { lectureMdx } from '@/course-content/lectures/mdx';
+} from '@/course-content/lectures/meta';
 
 import './slides.scss';
 

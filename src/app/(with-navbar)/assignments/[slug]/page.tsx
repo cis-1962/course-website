@@ -3,12 +3,12 @@ import { redirect } from 'next/navigation';
 
 import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
+import { assignmentMdx } from '@/course-content/assignments/mdx';
 import {
   ASSIGNMENT_DATA,
   ASSIGNMENT_SLUGS,
   AssignmentSlug,
-} from '@/course-content/assignments/constants';
-import { assignmentMdx } from '@/course-content/assignments/mdx';
+} from '@/course-content/assignments/meta';
 
 export function generateStaticParams() {
   return ASSIGNMENT_SLUGS.map((slug) => ({ slug }));

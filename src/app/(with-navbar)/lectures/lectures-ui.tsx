@@ -5,7 +5,7 @@ import { useState } from 'react';
 import { HiOutlineChevronRight, HiOutlineLockClosed } from 'react-icons/hi2';
 
 import { LECTURES_ROUTE } from '@/constants/routes';
-import { LectureNode, LECTURE_DATA } from '@/course-content/lectures/constants';
+import { LectureNode, LECTURE_DATA } from '@/course-content/lectures/meta';
 
 function LectureSection({
   node: { children, sectionName },
