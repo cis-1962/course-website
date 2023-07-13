@@ -26,32 +26,22 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout with submodule
+      - name: Checkout
         uses: actions/checkout@v3
         with:
           token: ${{ secrets.PRIVATE_PAT }}
           submodules: recursive
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v2
-        id: pnpm-install
-        with:
-          version: 8
-          run_install: false
-
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-          cache: 'pnpm'
-
+          cache: 'npm'
       - name: Setup Pages
         uses: actions/configure-pages@v3
         # with:
         #   # Automatically inject basePath in your Next.js configuration file and disable
         #   # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
         #   static_site_generator: next
-
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -62,16 +52,12 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
-
       - name: Install dependencies
-        run: 'pnpm install --frozen-lockfile'
-
+        run: 'npm ci'
       - name: Static HTML export with Next.js
-        run: 'pnpm build'
-
+        run: 'npm run build'
       - name: Copy public folder from course-content
         run: 'cp -a ./src/course-content/public/. ./out/'
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
