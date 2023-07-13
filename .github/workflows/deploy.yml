@@ -31,17 +31,20 @@ jobs:
         with:
           token: ${{ secrets.PRIVATE_PAT }}
           submodules: recursive
+
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: '18'
           cache: 'npm'
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
         # with:
         #   # Automatically inject basePath in your Next.js configuration file and disable
         #   # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
         #   static_site_generator: next
+
       - name: Restore cache
         uses: actions/cache@v3
         with:
@@ -52,12 +55,16 @@ jobs:
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
             ${{ runner.os }}-nextjs-${{ hashFiles('**/package-lock.json') }}-
+
       - name: Install dependencies
         run: 'npm ci'
+
       - name: Static HTML export with Next.js
         run: 'npm run build'
+
       - name: Copy public folder from course-content
         run: 'cp -a ./src/course-content/public/. ./out/'
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
