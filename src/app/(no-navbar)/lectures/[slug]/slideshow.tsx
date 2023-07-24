@@ -101,7 +101,8 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     router.replace(
       `${pathname}?${createQueryString({
         slide: (currentSlide + 1).toString(),
-      })}`
+      })}`,
+      { shallow: true }
     );
   }, [currentSlide, createQueryString, pathname, router]);
 
