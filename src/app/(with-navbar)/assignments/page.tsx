@@ -39,7 +39,9 @@ export default function AssignmentsPage() {
     <ul className="select-none grid-flow-row grid-cols-[auto_1fr_auto_auto] items-center gap-y-4 md:grid">
       {Object.entries(ASSIGNMENT_DATA).map(
         ([slug, { name, number, unlocks, due }]) => {
-          const isUnlocked = unlocks < Date.now();
+          const isUnlocked =
+            process.env.NODE_ENV === 'development' || unlocks < Date.now();
+
           return (
             <>
               <div

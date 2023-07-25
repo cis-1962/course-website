@@ -43,7 +43,7 @@ export default function AssignmentPage({
   } = ASSIGNMENT_DATA;
 
   // check if assignment unlocked
-  if (Date.now() < unlocks) {
+  if (process.env.NODE_ENV !== 'development' && Date.now() < unlocks) {
     redirect(ASSIGNMENTS_ROUTE);
   }
 

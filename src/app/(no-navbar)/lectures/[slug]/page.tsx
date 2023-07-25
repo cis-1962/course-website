@@ -66,7 +66,7 @@ export default function LecturePage({
   } = LECTURE_DATA;
 
   // check if assignment unlocked
-  if (Date.now() < date) {
+  if (process.env.NODE_ENV !== 'development' && Date.now() < date) {
     redirect(LECTURES_ROUTE);
   }
 

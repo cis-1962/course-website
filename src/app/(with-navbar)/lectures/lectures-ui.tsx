@@ -57,11 +57,13 @@ export function LectureNodeElement({ node }: { node: LectureNode }) {
     const {
       [slug]: { name, number, date },
     } = LECTURE_DATA;
-    const isUnlocked = Date.now() > date;
+    const isUnlocked =
+      process.env.NODE_ENV === 'development' || Date.now() > date;
+
     const dateString = dateFormatter.format(new Date(date));
     return (
       <div className="flex flex-row items-center gap-2">
-        <span className="font-light opacity-50">{dateString}</span>
+        <span className="font-light tabular-nums opacity-50">{dateString}</span>
         {isUnlocked ? (
           <Link
             href={`${LECTURES_ROUTE}/${slug}`}
