@@ -23,8 +23,23 @@ export default function Slideshow({ children }: { children: ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
 
+  const {
+    [pathname.split('/').pop() as LectureSlug]: {
+      number: lectureNumber,
+      name: lectureName,
+    },
+  } = LECTURE_DATA;
+
   const slides = useMemo(() => {
     const generatedSlides: { slide: ReactNode[]; className?: string }[] = [];
+
+    generatedSlides.push({
+      slide: [
+        <h1 key="title">Lecture {lectureNumber}</h1>,
+        <h2 key="subtitle">{lectureName}</h2>,
+      ],
+      className: 'center middle block-text',
+    });
 
     const childrenArray = React.Children.toArray(children);
     let currentGeneratingSlide: ReactNode[] = [];
@@ -63,7 +78,7 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     addCurrentSlide();
 
     return generatedSlides;
-  }, [children]);
+  }, [children, lectureName, lectureNumber]);
 
   // get slide from url
   const urlSlide = useMemo(() => {
@@ -130,10 +145,6 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     };
   }, [slides.length, nextSlide, prevSlide]);
 
-  const {
-    [pathname.split('/').pop() as LectureSlug]: { number, name },
-  } = LECTURE_DATA;
-
   return (
     <div className="mx-auto max-w-4xl p-3">
       <nav className="my-4 mb-4 flex gap-2 text-sm font-light">
@@ -146,7 +157,7 @@ export default function Slideshow({ children }: { children: ReactNode }) {
             Exit Slideshow
           </Link>
           <div className="opacity-50 sm:ml-8">
-            Lecture {number} - {name}
+            Lecture {lectureNumber} - {lectureName}
           </div>
         </div>
         <div className="ml-auto flex flex-row items-center gap-1">
