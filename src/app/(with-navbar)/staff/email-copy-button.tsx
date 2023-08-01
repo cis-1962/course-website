@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { HiOutlineDocumentDuplicate } from 'react-icons/hi2';
 
-export function EmailCopyButton({ email }: { email: string }) {
+export default function EmailCopyButton({ email }: { email: string }) {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {

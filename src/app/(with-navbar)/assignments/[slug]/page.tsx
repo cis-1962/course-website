@@ -3,7 +3,7 @@ import { redirect } from 'next/navigation';
 
 import { TITLE_BASE } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
-import { assignmentMdx } from '@/course-content/assignments/mdx';
+import assignmentMdx from '@/course-content/assignments/mdx';
 import {
   ASSIGNMENT_DATA,
   ASSIGNMENT_SLUGS,

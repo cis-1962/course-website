@@ -1,43 +1,42 @@
 {
+  "root": true,
+  "env": { "browser": true, "es6": true, "node": true },
   "extends": [
     "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
-    "plugin:unicorn/recommended",
     "next/core-web-vitals",
     "prettier"
   ],
-  "plugins": ["unused-imports"],
-  "parserOptions": { "project": "./tsconfig.json" },
+  "plugins": ["unused-imports", "unicorn"],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "tsconfigRootDir": ".",
+    "project": "./tsconfig.json"
+  },
   "rules": {
     // syntax rules
-    "prefer-destructuring": [
-      "error",
-      { "object": true, "array": false },
-      { "enforceForRenamedProperties": true }
-    ],
     "consistent-return": "off",
-    "import/prefer-default-export": "off",
+    "no-lonely-if": "error",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
     "@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
+    "@typescript-eslint/no-non-null-assertion": "off",
     "@typescript-eslint/no-use-before-define": [
       "error",
       {
         "functions": false,
         "classes": false
-      }
-    ],
-    "@typescript-eslint/strict-boolean-expressions": [
-      "error",
-      {
-        "allowString": true,
-        "allowNumber": true,
-        "allowNullableObject": true,
-        "allowNullableBoolean": true,
-        "allowNullableString": false,
-        "allowNullableNumber": false,
-        "allowAny": false
       }
     ],
 
@@ -48,12 +47,16 @@
       "error",
       { "extensions": [".js", ".jsx", ".ts", ".tsx"] }
     ],
+    "react/react-in-jsx-scope": "off",
 
     // unicorn
-    "unicorn/prevent-abbreviations": "off",
-    "unicorn/prefer-top-level-await": "off",
-    "unicorn/no-array-for-each": "off",
+    "unicorn/consistent-destructuring": "error",
+    "unicorn/error-message": "error",
+    "unicorn/no-abusive-eslint-disable": "error",
+    "unicorn/no-lonely-if": "error",
+    "unicorn/prefer-ternary": "error",
 
+    // import organization
     "import/order": [
       "warn",
       { "newlines-between": "always", "alphabetize": { "order": "asc" } }

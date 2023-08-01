@@ -12,7 +12,7 @@ import {
   STAFF_ROUTE,
   STYLE_ROUTE,
 } from '@/constants/routes';
-import { PennLogo } from '@/resources/images/penn-logo';
+import PennLogo from '@/resources/images/penn-logo';
 
 function NavLink({
   children,
@@ -42,7 +42,7 @@ function NavLink({
   );
 }
 
-export function Navbar() {
+export default function Navbar() {
   return (
     <div className="flex items-center pb-8 pt-6 md:pb-10 md:pt-8">
       <div className="mr-8 hidden h-20 lg:block">

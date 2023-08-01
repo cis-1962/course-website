@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 
-import { Navbar } from './navbar';
+import Navbar from './navbar';
 
 export default function NormalLayout({ children }: { children: ReactNode }) {
   return (

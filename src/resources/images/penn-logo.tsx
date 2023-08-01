@@ -1,4 +1,4 @@
-export function PennLogo() {
+export default function PennLogo() {
   return (
     <svg
       width="100%"

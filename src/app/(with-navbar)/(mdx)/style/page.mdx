@@ -1,4 +1,4 @@
-import { Alert } from '@/components/alert';
+import Alert from '@/components/alert';
 import { TITLE_BASE } from '@/constants/metadata';
 
 export const metadata = {
@@ -12,8 +12,8 @@ Code style is extremely important when developing code that lasts. This is espec
 Because of this, we're going to be adhering to a style guide for code written in this class. If you ever go out and write code professionally, you would do well to adhere to a structured style guide as well.
 
 <Alert type="danger">
-  For every ESLint error, 0.5 points will be deducted, and if your codebase is
-  formatted, 2.5 points will be added. Make sure to lint and format your code!
+  For every ESLint error, 0.5 points will be deducted. Make sure to lint and
+  format your code!
 </Alert>
 
 ## 🛠️ Linting and formatting
@@ -22,7 +22,7 @@ In order to do ensure that your JavaScript submissions adhere to this style guid
 
 For each homework, you will have to set up ESLint by following the steps in the [development guide](/development) (if it is not provided in the stub file). Our configuration for ESLint is based on the AirBNB style guide, which (believe it or not) is one of the most consistently used and loved configs out there. We also use a plugin called Unicorn which enables some unique good practice rules.
 
-Because code readability includes formatting, we give some extra credit for formatting your code. Our setup is configured up to use Prettier, a popular formatter for web development.
+Because code readability includes formatting, we give some extra credit for formatting your code. Our setup is configured to use Prettier, a popular formatter for web development.
 
 <Alert mdx type="warning">
   We will run ESLint on your code using this set of rules, so do not modify the
@@ -33,28 +33,20 @@ Because code readability includes formatting, we give some extra credit for form
 
 ## ✏️ Syntax
 
-- Use object destructuring and structuring
+- Use object destructuring and structuring consistently
 
 ```ts
-// ❌ incorrect - no destructuring
-const key = obj.key;
-const someVariable = obj.key;
+const dog = { name: 'Rocket', age: 10 };
+const cat = { name: 'Meowy', age: 4 };
+const { name, age } = dog;
 
-// ✅ correct - destructuring
-const { key } = obj;
-const { key: someVariable } = obj;
-```
+// ✅ correct - use previous destructuring
+console.log('dog:', name, age);
+// dots are fine as long as we haven't already destructured cat
+console.log('cat:', cat.name, cat.age);
 
-```ts
-const a = 1;
-const b = 2;
-
-// ❌ incorrect - redundant key names
-const obj = { a: a, b: b };
-
-// ✅ correct - structuring
-const obj = { a, b };
-const obj = { key1: a, key2: b }; // this is fine because key names are different
+// ❌ incorrect - we've already destructured dog
+console.log('dog:', dog.name, dog.age);
 ```
 
 - Omit boolean literal comparisons
@@ -65,23 +57,6 @@ if (b === true) { ... }
 
 // ✅ correct
 if (b) { ... }
-```
-
-- Explicitly handle `undefined` for numbers and strings
-
-```ts
-let optNumber: number | undefined = 0;
-let optString: string | undefined = 'hello!';
-let optObject: { ... } | undefined = { ... };
-
-// ❌ incorrect - must handle nullable numbers and strings
-if (optString) { ... };
-if (optNumber) { ... };
-
-// ✅ correct - handle undefined case
-if (optNumber !== undefined) { ... };
-if (optString !== undefined) { ... };
-if (optObject) { ... }; // this is ok! objects are always truthy
 ```
 
 - Use ternary expression instead of `if/else` block whenever possible
@@ -101,9 +76,7 @@ let a = b ? 3 : 2;
 
 - Use `===` and `!==` instead of `==` and `!=`
 
-- Use `undefined` instead of `null`
-
-- No `{}` and `return` when the function body is one line
+- No `{}` and `return` in arrow functions when the body is one line
 
 ```ts
 // ❌ incorrect
@@ -118,9 +91,13 @@ const func = (a) => a;
 - Declare functions with either `=>` or `function`
 
 ```ts
-// ✅ both correct
-const func = (...) => {};
-const func = function (...) {};
+// ❌ incorrect (evil)
+const func = new Function('console.log("hello!")');
+
+// ✅ all correct
+const func = () => {};
+const func = function () {};
+function func() {}
 ```
 
 - Use `let` or `const` for variable declaration instead of `var`
@@ -136,7 +113,9 @@ const newString = s1 + ' ' + s2;
 const newString = `${s1} ${s2}`;
 ```
 
-- No `console.log()` statements
+- No leftover `console.log()` statements - definitely use them while debugging though!
+
+{/* TODO: maybe add more stuff from the eslint config? */}
 
 <Alert mdx>
   There are more rules we didn't mention here that exist in the ESLint configuration. If you encounter one which needs to be broken under a specific circumstance, use `// eslint-disable-next-line <rule-name>` to disable it for whichever line it occurs on. **You must have good reason to do this!**

@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { LectureNodeElement } from './lectures-ui';
+import LectureNodeDisplay from './lecture-node-display';
 
 import { TITLE_BASE } from '@/constants/metadata';
 import { LECTURE_TREE } from '@/course-content/lectures/meta';
@@ -14,7 +14,7 @@ export default function LecturesPage() {
     <main>
       <div className="-mt-4">
         {LECTURE_TREE.map((node) => (
-          <LectureNodeElement node={node} key={node.slug || node.sectionName} />
+          <LectureNodeDisplay node={node} key={node.slug || node.sectionName} />
         ))}
       </div>
     </main>

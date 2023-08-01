@@ -36,7 +36,7 @@ function LectureSection({
         <ul className="mb-4 mt-2">
           {children.map((child) => (
             <li key={child.slug || child.sectionName}>
-              <LectureNodeElement node={child} />
+              <LectureNodeDisplay node={child} />
             </li>
           ))}
         </ul>
@@ -50,7 +50,7 @@ const dateFormatter = Intl.DateTimeFormat('en-US', {
   month: '2-digit',
 });
 
-export function LectureNodeElement({ node }: { node: LectureNode }) {
+export default function LectureNodeDisplay({ node }: { node: LectureNode }) {
   const { slug } = node;
   if (slug) {
     // leaf node

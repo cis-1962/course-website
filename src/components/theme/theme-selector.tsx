@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 const LightTheme = React.lazy(() => import('./light-theme'));
 const DarkTheme = React.lazy(() => import('./dark-theme'));
 
-export function ThemeSelector() {
+export default function ThemeSelector() {
   const [isDark, setIsDark] = useState<boolean | undefined>();
 
   useEffect(() => {

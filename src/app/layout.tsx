@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { IBM_Plex_Sans, Inter, JetBrains_Mono } from 'next/font/google';
 
-import { ThemeSelector } from '../components/theme/theme-selector';
+import ThemeSelector from '../components/theme/theme-selector';
 
 import { DEFAULT_METADATA } from '@/constants/metadata';
 

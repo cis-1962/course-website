@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Image from 'next/image';
 
-import { EmailCopyButton } from './email-copy';
+import EmailCopyButton from './email-copy-button';
 
 import { TITLE_BASE } from '@/constants/metadata';
 import { STAFF, STAFF_IMAGE_FOLDER } from '@/constants/staff';

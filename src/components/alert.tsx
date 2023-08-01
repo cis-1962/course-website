@@ -25,7 +25,7 @@ const alertIcons: { [key in AlertType]: IconType } = {
   warning: HiOutlineExclamationTriangle,
 };
 
-export function Alert({
+export default function Alert({
   children,
   type = 'info',
   hideIcon,
