@@ -14,7 +14,7 @@ export const STAFF = [
     role: 'Lecturer',
     email: 'tuneer@seas.upenn.edu',
     description:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      "Hey! I'm Tuneer, a junior studying CS at Penn. I'm also a Team Lead for Penn Mobile @ Penn Labs, so if the app ever breaks... my bad.",
     image: 'raccoon.png',
   },
   {
