@@ -1,14 +1,23 @@
-import { FEEDBACK_ROUTE } from '@/constants/routes';
+import {
+  FEEDBACK_ROUTE,
+  STAFF_ROUTE,
+  STYLE_ROUTE,
+  DEVELOPMENT_ROUTE,
+} from '@/constants/routes';
 import Alert from '@/components/alert';
 import { TITLE_BASE } from '@/constants/metadata';
+import Link from 'next/link';
 
 export const metadata = {
-  title: `${TITLE_BASE} | Home`,
+  title: `${TITLE_BASE} | Syllabus`,
 };
 
-<Alert>This course meets \<DAY\> from \<START-TIME\> to \<END-TIME\> @ \<LOCATION\>.</Alert>
+<Alert mdx>
+  This course meets Fridays from 1:45 to 3:15pm @ Meyerson B2. For OH times,
+  check the <Link href={STAFF_ROUTE}>staff page</Link>.
+</Alert>
 
-## 📚 Course Description
+## 📚 Topics
 
 This course provides an introduction to modern JavaScript: frameworks, design patterns, techniques, and best practices used to create robust applications both server-side and client-side. The emphasis will be on sampling a wide range of JavaScript use cases. The topics covered will include:
 
@@ -31,35 +40,38 @@ There are many, many JS frameworks (far more than we can cover in this course). 
 - CIS 1200 or equivalent (or permission of instructor).
 - Some knowledge of HTML/CSS (if you don't meet this requirement, you are expected to pick up the basics on your own with online resources like [Codecademy](http://codecademy.com/) and [Mozilla Developer Network](https://developer.mozilla.org/en-US/)).
 
-## 🚔 Policies
+## 🧱 Structure
 
-{/* TODO: homework grading policy - how many points for correctness, practices, code style, late days policy, etc */}
+<Alert mdx>There will be no quizzes or exams.</Alert>
 
-Homework will be graded out of 25 points: 15 for correctness (automatically graded), 5 for JavaScript best practices (automatically graded), and 5 for code style (manually graded). Grading will follow the [style guide for the course](/style) - please ask on CampusWire if you have a specific question that is not covered here.
+We currently plan to hold 15 lectures total. About 2/3 of the semester will be going through vanilla + React + Express + Mongo, before holding lectures that focus more on specific modern/popular JS techniques.
 
-Please note that the code style grade is additive, not subtractive; if you do not complete a homework, you will not receive 5 style points for ‘making no errors,’ but rather 0 style points for writing no code at all.
+We currently plan to have one assignment per week, which is unlocked at the end of that week's lecture, and due by the start of the next week's lecture. Starting in November, we will start a final project, which will take you through to the middle of December (due before reading days).
 
-You have two **free** late days to use throughout the course. After this, late submissions will be docked **20%** for every day late. Late days are **rounded up and counted in increments of 1 day** (e.g. 1 hour is 1 day, a day and 23 hours is 2 days). Additional extensions will _**only**_ be granted in truly extenuating circumstances.
+## Academic Integrity
 
-If a submission doesn't run (i.e. has syntax errors), we will not be lenient — you will likely receive zero credit. Please start assignments early and use office hours to your advantage.
+This section doesn't have an emoji in the title because we want you to take this seriously.
 
-{/* TODO: port syllabus? */}
+We actively encourage using Google, and have no problem with students using LLMs like ChatGPT to better understand problems they face and possible solutions. **Don't copy/paste from online sources, or students who have already taken the course.**
 
-**See the [course syllabus](/syllabus) for more detailed policies and grading info.**
+Don't have mid-level discussions with other students - implementation detail should be individually authored. However high-level discussions like overall homework goals and structure, or low-level discussions like syntax or built-in function usage are totally fine.
+
+## 🚔 Grading Policies
+
+Each assignment will be graded out of 75 for correctness, and 25 for best practices. ESLint errors will be scored deductively, with a max of -15 points. Check the <Link href={STYLE_ROUTE}>style page</Link> for guidelines.
+
+You have three **free** late days to use throughout the course. After this, late submissions will be docked **10%** for every day late. Late days are **rounded up and counted in increments of 1 day** (e.g. 1 hour is 1 day, 23 hours is a day, 25 hours is two days). Additional extensions can be granted only in extenuating circumstances.
+
+If a submission doesn't run (i.e. has build errors), we will not be lenient — you will likely receive zero credit. Please start assignments early and use office hours to your advantage.
+
+Attendance is not mandatory for every lecture, but lectures are not recorded, so we highly recommend coming weekly to make the most of this class. Obviously since it is a Friday time we don't expect perfect attendance, but do note that if we notice you missing the majority of lectures, up to 3% will be docked from your overall grade.
 
 ## 📝 Logistics
 
-{/* TODO: set up Ed or CampusWire */}
+We use Ed for discussion, to which you should already be invited automatically.
 
-We use CampusWire instead of Piazza for asking questions and sharing updates about the course. You can join [here](https://campuswire.com/c/GBED6F3F7/feed).
-
-{/* TODO: gradescope */}
-
-Homeworks are submitted to Gradescope with course code ZRX5DV. You can submit an unlimited number of times. The majority of homeworks have automated test cases which run immedaitely after you submit, allowing you to check your work.
+All detailed course info can be found on this website, including all lectures we hold, and full assignment writeups. We are using GitHub Classroom for assignments, which will set you up with starter templates you can work from. Assignments will exist on canvas only as a text field to submit a link to your latest commit (if you've taken 4600 it's similar to that). We will (at least 3 days after due dates) be grading through Canvas.
 
 All 19xx courses have a shared "lecture" which meets for the first three weeks at the start of the semester and does not meet after. The "recitation" as listed in PennInTouch is the actual course. This meets once a week throughout the entire semester.
 
-## 📢 Feedback
-
-Please let us know how we can improve the course!
-{/* TODO: feedback link */}
+Check the <Link href={DEVELOPMENT_ROUTE}>development page</Link> to get set up!

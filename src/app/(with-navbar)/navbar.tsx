@@ -7,7 +7,7 @@ import { ReactNode } from 'react';
 import {
   ASSIGNMENTS_ROUTE,
   DEVELOPMENT_ROUTE,
-  HOME_ROUTE,
+  SYLLABUS_ROUTE,
   LECTURES_ROUTE,
   STAFF_ROUTE,
   STYLE_ROUTE,
@@ -53,8 +53,8 @@ export default function Navbar() {
           CIS-1962: JavaScript Minicourse
         </h1>
         <ul className="-ml-3 mt-2 flex select-none flex-row flex-wrap text-lg tracking-[-0.01em]">
-          <NavLink href={HOME_ROUTE} exact>
-            Home
+          <NavLink href={SYLLABUS_ROUTE} exact>
+            Syllabus
           </NavLink>
           <NavLink href={ASSIGNMENTS_ROUTE}>Assignments</NavLink>
           <NavLink href={LECTURES_ROUTE}>Lectures</NavLink>
