@@ -17,7 +17,7 @@ export const STAFF = [
     oh: 'Thursday 3:30-5pm',
     description:
       "Hey! I'm Tuneer, a junior studying CS at Penn. I'm also a Team Lead for Penn Mobile @ Penn Labs, so if the app ever breaks... my bad.",
-    image: 'raccoon.png',
+    image: 'tuneer.png',
   },
   {
     name: 'Kashyap Chaturvedula',
