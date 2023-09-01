@@ -42,7 +42,6 @@ export default function AssignmentList() {
 const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'numeric',
   day: 'numeric',
-  weekday: 'long',
   timeZone: 'EST',
 });
 
