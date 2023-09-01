@@ -43,7 +43,16 @@ export default function AssignmentPage({
   } = ASSIGNMENT_DATA;
 
   // check if assignment unlocked
-  if (process.env.NODE_ENV !== 'development' && Date.now() < unlocks) {
+  const flooredUnlock = new Date(unlocks);
+  flooredUnlock.setHours(0);
+  flooredUnlock.setMinutes(0);
+  flooredUnlock.setSeconds(0);
+  flooredUnlock.setMilliseconds(0);
+
+  if (
+    process.env.NODE_ENV !== 'development' &&
+    Date.now() < flooredUnlock.getTime()
+  ) {
     redirect(ASSIGNMENTS_ROUTE);
   }
 

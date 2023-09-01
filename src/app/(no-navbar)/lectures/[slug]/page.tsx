@@ -66,7 +66,16 @@ export default function LecturePage({
   } = LECTURE_DATA;
 
   // check if assignment unlocked
-  if (process.env.NODE_ENV !== 'development' && Date.now() < date) {
+  const flooredDate = new Date(date);
+  flooredDate.setHours(0);
+  flooredDate.setMinutes(0);
+  flooredDate.setSeconds(0);
+  flooredDate.setMilliseconds(0);
+
+  if (
+    process.env.NODE_ENV !== 'development' &&
+    Date.now() < flooredDate.getTime()
+  ) {
     redirect(LECTURES_ROUTE);
   }
 
