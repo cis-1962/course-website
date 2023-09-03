@@ -6,7 +6,7 @@ export default function Credit() {
       <Alert>
         Credit for much of the material goes to{' '}
         <a
-          className="underline"
+          className="font-medium underline"
           href="https://peterbaile.github.io/"
           target="_blank"
         >
