@@ -68,7 +68,7 @@ export default function AssignmentPage({
   const { [slug as AssignmentSlug]: Mdx } = assignmentMdx;
   return (
     <main>
-      <h1 className="text-4xl font-bold tracking-tight">
+      <h1 className="font-display text-4xl font-bold tracking-tight">
         Homework {number} - {name}
       </h1>
       <h3 className="mt-1 tracking-wide text-neutral-500 dark:text-neutral-400">
