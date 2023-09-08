@@ -36,6 +36,9 @@ const dateFormatter = new Intl.DateTimeFormat('en-US', {
   month: 'long',
   day: 'numeric',
   timeZone: 'EST',
+  hour: 'numeric',
+  hour12: true,
+  minute: 'numeric',
 });
 
 export default function AssignmentPage({
