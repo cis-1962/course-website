@@ -32,6 +32,12 @@ export function generateMetadata({
   } satisfies Metadata;
 }
 
+const dateFormatter = new Intl.DateTimeFormat('en-US', {
+  month: 'long',
+  day: 'numeric',
+  timeZone: 'EST',
+});
+
 export default function AssignmentPage({
   params: { slug },
 }: {
@@ -39,7 +45,7 @@ export default function AssignmentPage({
 }) {
   // we know slug exists because of dynamicParams option
   const {
-    [slug as AssignmentSlug]: { number, name, unlocks },
+    [slug as AssignmentSlug]: { number, name, unlocks, due },
   } = ASSIGNMENT_DATA;
 
   // check if assignment unlocked
@@ -58,11 +64,16 @@ export default function AssignmentPage({
 
   const { [slug as AssignmentSlug]: Mdx } = assignmentMdx;
   return (
-    <div className="mdx">
-      <h1>
+    <main>
+      <h1 className="text-4xl font-bold tracking-tight">
         Homework {number} - {name}
       </h1>
-      <Mdx />
-    </div>
+      <h3 className="mt-1 tracking-wide text-neutral-500 dark:text-neutral-400">
+        Due {dateFormatter.format(due)}
+      </h3>
+      <div className="mdx mt-6">
+        <Mdx />
+      </div>
+    </main>
   );
 }
