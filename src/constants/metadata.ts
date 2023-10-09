@@ -2,9 +2,12 @@ import { Metadata } from 'next';
 
 export const TITLE_BASE = 'CIS-1962';
 
+export function makeTitle(pageName: string) {
+  return `${pageName} | ${TITLE_BASE}`;
+}
+
 export const DEFAULT_METADATA = {
-  // TODO: update this URL
-  metadataBase: new URL('https://cis1962.tlshaw.me/'),
+  metadataBase: new URL('https://javascriptclass.org/'),
   title: TITLE_BASE,
   description:
     'A CIS Minicourse at UPenn exploring the world of JavaScript. Fall 2023 semester.',

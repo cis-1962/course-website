@@ -4,10 +4,10 @@ import Credit from '../credit';
 
 import AssignmentList from './assignment-list';
 
-import { TITLE_BASE } from '@/constants/metadata';
+import { makeTitle } from '@/constants/metadata';
 
 export const metadata = {
-  title: `${TITLE_BASE} | Assigments`,
+  title: makeTitle('Assigments'),
 } satisfies Metadata;
 
 export default function AssignmentsPage() {

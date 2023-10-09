@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
-import { TITLE_BASE } from '@/constants/metadata';
+import { makeTitle } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
 import assignmentMdx from '@/course-content/assignments/mdx';
 import {
@@ -28,7 +28,7 @@ export function generateMetadata({
     [slug]: { number, name },
   } = ASSIGNMENT_DATA;
   return {
-    title: `${TITLE_BASE} | HW${number} - ${name}`,
+    title: makeTitle(`HW${number} - ${name}`),
   } satisfies Metadata;
 }
 

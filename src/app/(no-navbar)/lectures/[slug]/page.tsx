@@ -5,7 +5,7 @@ import { HiOutlineArrowPath } from 'react-icons/hi2';
 
 import Slideshow from './slideshow';
 
-import { TITLE_BASE } from '@/constants/metadata';
+import { makeTitle } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
 import lectureMdx from '@/course-content/lectures/mdx';
 import {
@@ -34,7 +34,7 @@ export function generateMetadata({
     [slug]: { name, number },
   } = LECTURE_DATA;
   return {
-    title: `${TITLE_BASE} | Lecture ${number} - ${name}`,
+    title: makeTitle(`Lecture ${number} - ${name}`),
   } satisfies Metadata;
 }
 

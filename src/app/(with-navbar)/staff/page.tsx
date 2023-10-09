@@ -3,11 +3,11 @@ import Image from 'next/image';
 
 import EmailCopyButton from './email-copy-button';
 
-import { TITLE_BASE } from '@/constants/metadata';
+import { makeTitle } from '@/constants/metadata';
 import { STAFF, STAFF_IMAGE_FOLDER } from '@/constants/staff';
 
 export const metadata = {
-  title: `${TITLE_BASE} | Staff`,
+  title: makeTitle('Staff'),
 } satisfies Metadata;
 
 export default function StaffPage() {

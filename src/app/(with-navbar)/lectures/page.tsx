@@ -4,10 +4,10 @@ import Credit from '../credit';
 
 import LectureTree from './lecture-tree';
 
-import { TITLE_BASE } from '@/constants/metadata';
+import { makeTitle } from '@/constants/metadata';
 
 export const metadata = {
-  title: `${TITLE_BASE} | Lectures`,
+  title: makeTitle('Lectures'),
 } satisfies Metadata;
 
 export default function LecturesPage() {
