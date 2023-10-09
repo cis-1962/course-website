@@ -5,11 +5,11 @@ import {
   DEVELOPMENT_ROUTE,
 } from '@/constants/routes';
 import Alert from '@/components/alert';
-import { TITLE_BASE } from '@/constants/metadata';
+import { makeTitle } from '@/constants/metadata';
 import Link from 'next/link';
 
 export const metadata = {
-  title: `${TITLE_BASE} | Syllabus`,
+  title: makeTitle('Syllabus'),
 };
 
 <Alert mdx>
