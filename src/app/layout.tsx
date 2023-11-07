@@ -9,7 +9,7 @@ import './globals.scss';
 
 const displayFont = IBM_Plex_Sans({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['100', '200', '300', '400', '500', '600', '700'],
   variable: '--font-display',
 });
 const sansFont = Inter({

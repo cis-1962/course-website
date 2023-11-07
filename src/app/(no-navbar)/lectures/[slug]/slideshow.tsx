@@ -14,6 +14,7 @@ import {
   HiOutlineChevronLeft,
   HiOutlineChevronRight,
 } from 'react-icons/hi2';
+import { useDebounce } from 'use-debounce';
 
 import { LECTURES_ROUTE } from '@/constants/routes';
 import { LECTURE_DATA, LectureSlug } from '@/course-content/lectures/meta';
@@ -111,15 +112,15 @@ export default function Slideshow({ children }: { children: ReactNode }) {
     [searchParams]
   );
 
+  const [debouncedCurrentSlide] = useDebounce(currentSlide, 500);
   // update query string
   useEffect(() => {
     router.replace(
       `${pathname}?${createQueryString({
-        slide: (currentSlide + 1).toString(),
-      })}`,
-      { shallow: true }
+        slide: (debouncedCurrentSlide + 1).toString(),
+      })}`
     );
-  }, [currentSlide, createQueryString, pathname, router]);
+  }, [debouncedCurrentSlide, createQueryString, pathname, router]);
 
   const nextSlide = useCallback(() => {
     setCurrentSlide((slide) => Math.min(slide + 1, slides.length - 1));

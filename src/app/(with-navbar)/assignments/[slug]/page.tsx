@@ -14,11 +14,6 @@ export function generateStaticParams() {
   return ASSIGNMENT_SLUGS.map((slug) => ({ slug }));
 }
 
-const dynamicParams = false;
-export { dynamicParams };
-
-export const revalidate = 15;
-
 export function generateMetadata({
   params: { slug },
 }: {
@@ -46,7 +41,7 @@ export default function AssignmentPage({
 }: {
   params: { slug: string };
 }) {
-  // we know slug exists because of dynamicParams option
+  // we know slug exists because of static export
   const {
     [slug as AssignmentSlug]: { number, name, unlocks, due },
   } = ASSIGNMENT_DATA;
