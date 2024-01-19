@@ -6,6 +6,7 @@ import {
 } from '@/constants/routes';
 import Alert from '@/components/alert';
 import { makeTitle } from '@/constants/metadata';
+import { DAY, LOCATION } from '@/constants/per-semester';
 import Link from 'next/link';
 
 export const metadata = {
@@ -13,8 +14,8 @@ export const metadata = {
 };
 
 <Alert mdx>
-  This course meets Fridays from 1:45 to 3:15pm @ Meyerson B2. For OH times,
-  check the <Link href={STAFF_ROUTE}>staff page</Link>.
+  This course meets {DAY} @ {LOCATION}. For OH times, check the{' '}
+  <Link href={STAFF_ROUTE}>staff page</Link>.
 </Alert>
 
 ## 📚 Topics

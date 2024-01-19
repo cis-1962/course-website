@@ -66,6 +66,8 @@ VSCode has a WSL extension which allows you to access your Linux subsystem's fil
 
 There are many ways to test JS code. For simple syntax checking, the easiest way is often via the [developer tools](https://developers.google.com/web/tools/chrome-devtools/) in your browser or by running the `node` command on its own in your terminal, which gives you a Node-based JS REPL (type `Ctrl + D` to exit).
 
+For most of our assignments, we'll have scripts already set up in each project's `package.json` file, allowing you to run `npm run <script>` to execute the intended JS file or package.
+
 To test a JS file, navigate in your terminal to the directory where the file is located (if you're not sure how to do this, find an intro guide on how to using your terminal online). From there, you can run `node <file-name>`. Any `console.log` statement executed in your file will print out to the console of your terminal. This is also a good way to check for syntax errors. It can also be useful to make a new file specifically for testing functions in another file. In the test file, you can `require` the primary file and call functions there.
 
 For testing TypeScript code, you will need some tool to transpile your scripts to JS before running them. For this we recommend the library [ts-node](https://www.npmjs.com/package/ts-node), which essentially acts just like Node, but attempts to transpile any TypeScript in files you run. You can install it globally by running `npm i -g ts-node`, but we recommend installing it as a `devDependency` in your projects as well.
@@ -91,18 +93,15 @@ While linters are useful for finding problems, they typically don't deal with co
 
 ## ⚙️ Installing ESLint + Prettier
 
-You will need to install these dependencies **per-project**. Most of our assignments will already contain both ESLint and Prettier configurations, but if you are scaffolding your own project, this is the way to go. Make sure you have an existing `package.json`.
+You will need to install these **per-project**. Most of our assignments will already contain both ESLint and Prettier configurations, but if you are scaffolding your own project, this is the way to go. Make sure you have an existing `package.json`.
 
 - Install ESLint, Prettier, and our config's dependencies into your project by running:
 
 ```sh
-npm install -D eslint prettier eslint-config-airbnb eslint-config-airbnb-typescript \
-               eslint-config-prettier eslint-plugin-unicorn
-npx install-peerdeps -D eslint-config-airbnb
-npx install-peerdeps -D eslint-config-airbnb-typescript
+npm install -D eslint@latest prettier@latest @cis-1962/eslint-config@latest
 ```
 
-- Create a file called `.eslintrc.json` at the root directory. Copy and paste the contents of [this file](/reference/eslint-config.json).
-- Create a file called `.prettierrc.json` also at the root directory. Copy and paste [this file](/reference/prettier-config.json).
+- Start with one of our `.eslintrc.js` templates found [on GitHub](https://github.com/cis-1962/eslint-config) to use our ESLint rules.
+- Create a file called `.prettierrc.json` at the root directory. Copy and paste [this file](/reference/prettier-config.json).
 - Make sure you have both the ESLint and Prettier extensions installed in your editor of choice.
 - Your editor should pick up the configurations (probably after a restart) and start giving you error messages and formatting options. Again, we recommend enabling "format on save" in your editor of choice.

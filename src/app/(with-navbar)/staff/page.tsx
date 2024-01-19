@@ -4,7 +4,7 @@ import Image from 'next/image';
 import EmailCopyButton from './email-copy-button';
 
 import { makeTitle } from '@/constants/metadata';
-import { STAFF, STAFF_IMAGE_FOLDER } from '@/constants/staff';
+import { STAFF, STAFF_IMAGE_FOLDER } from '@/constants/per-semester';
 
 export const metadata = {
   title: makeTitle('Staff'),

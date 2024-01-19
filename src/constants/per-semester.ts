@@ -6,8 +6,8 @@ export const STAFF = [
     role: 'Lecturer',
     email: 'tlshaw@sas.upenn.edu',
     oh: {
-      location: '3rd Floor Levine Bump Space',
-      time: 'Wednesday 8-10pm',
+      location: 'Location TBD',
+      time: 'Time TBD',
     },
     description:
       "Hi! I'm Thomas, an undergrad junior in the DMD program at Penn. I also help run the UPenn SIGGRAPH club, which you should definitely check out if you have any interest in graphics tech!",
@@ -18,11 +18,15 @@ export const STAFF = [
     role: 'TA',
     email: 'mkida@wharton.upenn.edu',
     oh: {
-      location: '3rd Floor Levine Bump Space',
-      time: 'Monday 6:30-7:30pm',
+      location: 'Location TBD',
+      time: 'Time TBD',
     },
     description:
       "I'm a junior in M&T. I like playing volleyball and rock climbing. Let's talk anything about design, fashion, or tech!",
     image: 'marcel.jpeg',
   },
 ] as const;
+
+export const DAY = 'Wednesdays from 5:15 to 6:45pm';
+
+export const LOCATION = 'Towne 311';
