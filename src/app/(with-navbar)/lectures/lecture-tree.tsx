@@ -32,7 +32,7 @@ export default function LectureTree() {
     <div className="-mt-4">
       <currentTimeContext.Provider value={currentTime}>
         {LECTURE_TREE.map((node) => (
-          <LectureNodeDisplay node={node} key={node.slug || node.sectionName} />
+          <LectureNodeDisplay node={node} key={node.slug ?? node.sectionName} />
         ))}
       </currentTimeContext.Provider>
     </div>

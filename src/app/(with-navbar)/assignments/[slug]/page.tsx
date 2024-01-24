@@ -9,6 +9,7 @@ import {
   ASSIGNMENT_SLUGS,
   AssignmentSlug,
 } from '@/course-content/assignments/meta';
+import Redirector from '@/components/redirector';
 
 export function generateStaticParams() {
   return ASSIGNMENT_SLUGS.map((slug) => ({ slug }));
@@ -46,20 +47,6 @@ export default function AssignmentPage({
     [slug as AssignmentSlug]: { number, name, unlocks, due },
   } = ASSIGNMENT_DATA;
 
-  // check if assignment unlocked
-  const flooredUnlock = new Date(unlocks);
-  flooredUnlock.setHours(0);
-  flooredUnlock.setMinutes(0);
-  flooredUnlock.setSeconds(0);
-  flooredUnlock.setMilliseconds(0);
-
-  if (
-    process.env.NODE_ENV !== 'development' &&
-    Date.now() < flooredUnlock.getTime()
-  ) {
-    redirect(ASSIGNMENTS_ROUTE);
-  }
-
   const { [slug as AssignmentSlug]: Mdx } = assignmentMdx;
   return (
     <main>
@@ -72,6 +59,7 @@ export default function AssignmentPage({
       <div className="mdx mt-6">
         <Mdx />
       </div>
+      <Redirector minDate={new Date(unlocks)} redirectTo={ASSIGNMENTS_ROUTE} />
     </main>
   );
 }

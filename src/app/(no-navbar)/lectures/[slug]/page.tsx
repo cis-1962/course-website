@@ -12,9 +12,11 @@ import {
   LECTURE_DATA,
   LECTURE_SLUGS,
   LectureSlug,
+  lectureSchedule,
 } from '@/course-content/lectures/meta';
 
 import './slides.scss';
+import Redirector from '@/components/redirector';
 
 export function generateStaticParams() {
   return LECTURE_SLUGS.map((slug) => ({ slug }));
@@ -55,31 +57,18 @@ export default function LecturePage({
 }: {
   params: { slug: string };
 }) {
-  // we know slug exists because of static export
   const {
     [slug as LectureSlug]: { date },
   } = LECTURE_DATA;
-
-  // check if assignment unlocked
-  const flooredDate = new Date(date);
-  flooredDate.setHours(0);
-  flooredDate.setMinutes(0);
-  flooredDate.setSeconds(0);
-  flooredDate.setMilliseconds(0);
-
-  if (
-    process.env.NODE_ENV !== 'development' &&
-    Date.now() < flooredDate.getTime()
-  ) {
-    redirect(LECTURES_ROUTE);
-  }
-
   const { [slug as LectureSlug]: Mdx } = lectureMdx;
   return (
-    <Suspense fallback={<SlideshowFallback />}>
-      <Slideshow>
-        <Mdx />
-      </Slideshow>
-    </Suspense>
+    <>
+      <Suspense fallback={<SlideshowFallback />}>
+        <Slideshow>
+          <Mdx />
+        </Slideshow>
+      </Suspense>
+      <Redirector minDate={new Date(date)} redirectTo={LECTURES_ROUTE} />
+    </>
   );
 }

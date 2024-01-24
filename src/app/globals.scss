@@ -70,7 +70,7 @@ body {
     }
 
     code {
-      @apply rounded-md px-1 font-mono ring-1 ring-gray-300 dark:font-normal dark:ring-gray-700;
+      @apply rounded-md px-1 font-mono ring-1 ring-gray-300 [font-variant-ligatures:none] dark:font-normal dark:ring-gray-700;
     }
 
     pre {
