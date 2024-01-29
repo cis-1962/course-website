@@ -6,8 +6,8 @@ export const STAFF = [
     role: 'Lecturer',
     email: 'tlshaw@sas.upenn.edu',
     oh: {
-      location: 'Location TBD',
-      time: 'Time TBD',
+      location: 'Levine 3 Bump Space',
+      time: 'Monday 8-10pm',
     },
     description:
       "Hi! I'm Thomas, an undergrad junior in the DMD program at Penn. I also help run the UPenn SIGGRAPH club, which you should definitely check out if you have any interest in graphics tech!",
