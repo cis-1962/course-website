@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 import { Suspense } from 'react';
 import { HiOutlineArrowPath } from 'react-icons/hi2';
 
 import Slideshow from './slideshow';
 
+import Redirector from '@/components/redirector';
 import { makeTitle } from '@/constants/metadata';
 import { LECTURES_ROUTE } from '@/constants/routes';
 import lectureMdx from '@/course-content/lectures/mdx';
@@ -12,11 +12,9 @@ import {
   LECTURE_DATA,
   LECTURE_SLUGS,
   LectureSlug,
-  lectureSchedule,
 } from '@/course-content/lectures/meta';
 
 import './slides.scss';
-import Redirector from '@/components/redirector';
 
 export function generateStaticParams() {
   return LECTURE_SLUGS.map((slug) => ({ slug }));

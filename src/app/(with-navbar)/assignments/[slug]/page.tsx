@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
-import { redirect } from 'next/navigation';
 
+import Redirector from '@/components/redirector';
 import { makeTitle } from '@/constants/metadata';
 import { ASSIGNMENTS_ROUTE } from '@/constants/routes';
 import assignmentMdx from '@/course-content/assignments/mdx';
@@ -9,7 +9,6 @@ import {
   ASSIGNMENT_SLUGS,
   AssignmentSlug,
 } from '@/course-content/assignments/meta';
-import Redirector from '@/components/redirector';
 
 export function generateStaticParams() {
   return ASSIGNMENT_SLUGS.map((slug) => ({ slug }));
