@@ -25,6 +25,18 @@ export const STAFF = [
       "I'm a junior in M&T. I like playing volleyball and rock climbing. Let's talk anything about design, fashion, or tech!",
     image: 'marcel.jpeg',
   },
+  {
+    name: 'Andrew Jiang',
+    role: 'TA',
+    email: 'ajay54@sas.upenn.edu',
+    oh: {
+      location: 'Levine 601 bump space',
+      time: 'Thursday 7-8pm'
+    },
+    description:
+      "Hi! I'm a senior majoring in Economics and CIS. I enjoy eating good food and playing all types of games (board games, card games, video games). Feel free to reach out for anything!",
+    image: 'andrew.png'
+    }
 ] as const;
 
 export const DAY = 'Wednesdays from 5:15 to 6:45pm';
