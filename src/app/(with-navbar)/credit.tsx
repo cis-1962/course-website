@@ -1,10 +1,10 @@
 import Alert from '@/components/alert';
 
-export default function Credit() {
+export default function Credit({ className = '' }: { className?: string }) {
   return (
-    <div className="pb-10">
-      <Alert>
-        Credit for much of the material goes to{' '}
+    <div className={className}>
+      <Alert mdx type="success">
+        Our curriculum wouldn&apos;t be possible without the work of{' '}
         <a
           className="font-medium underline"
           href="https://peterbaile.github.io/"

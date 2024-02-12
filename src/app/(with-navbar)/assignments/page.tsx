@@ -13,8 +13,8 @@ export const metadata = {
 export default function AssignmentsPage() {
   return (
     <main>
-      <Credit />
       <AssignmentList />
+      <Credit className="mt-6" />
     </main>
   );
 }
